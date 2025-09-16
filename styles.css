@@ -418,42 +418,6 @@ p {
     transform: translateY(-2px);
 }
 
-/* Technologies Section */
-.technologies-section {
-    margin: 1.5rem 0;
-}
-
-.technologies-section h4 {
-    color: var(--sage-green);
-    font-size: 1rem;
-    font-weight: 600;
-    margin-bottom: 0.8rem;
-    text-align: center;
-}
-
-.tech-badges {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    justify-content: center;
-}
-
-.tech-badge {
-    background: var(--light-bg);
-    color: var(--sage-green);
-    padding: 0.4rem 0.8rem;
-    border-radius: 15px;
-    font-size: 0.8rem;
-    font-weight: 500;
-    border: 1px solid rgba(138, 167, 159, 0.2);
-    transition: var(--transition);
-}
-
-.tech-badge:hover {
-    background: var(--sage-green);
-    color: var(--white);
-    transform: translateY(-1px);
-}
 
 /* About Section */
 .about {
