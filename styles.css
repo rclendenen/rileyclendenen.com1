@@ -324,7 +324,7 @@ p {
 /* Services Section */
 .services {
     padding: var(--section-padding);
-    background: var(--white);
+    background: var(--timberwolf);
 }
 
 .services-grid {
