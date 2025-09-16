@@ -423,7 +423,7 @@ p {
 /* About Section */
 .about {
     padding: var(--section-padding);
-    background: var(--timberwolf);
+    background: var(--sage);
 }
 
 .about-content {
@@ -434,7 +434,7 @@ p {
 }
 
 .about-text h2 {
-    color: var(--sage);
+    color: var(--white);
     margin-bottom: 1.5rem;
     text-align: left;
 }
@@ -442,7 +442,8 @@ p {
 .about-text p {
     font-size: 1.1rem;
     margin-bottom: 1.5rem;
-    opacity: 0.8;
+    opacity: 0.9;
+    color: var(--white);
 }
 
 .skills-section {
@@ -450,7 +451,7 @@ p {
 }
 
 .skills-section h3 {
-    color: var(--sage);
+    color: var(--white);
     margin-bottom: 1rem;
     font-size: 1.2rem;
 }
@@ -461,8 +462,8 @@ p {
 
 .skills-list li {
     padding: 0.5rem 0;
-    color: var(--deep-text);
-    opacity: 0.8;
+    color: var(--white);
+    opacity: 0.9;
     position: relative;
     padding-left: 1.5rem;
 }
@@ -471,13 +472,13 @@ p {
     content: '•';
     position: absolute;
     left: 0;
-    color: var(--sage);
+    color: var(--white);
     font-weight: bold;
 }
 
 .about-cta {
-    background: var(--sage);
-    color: var(--white);
+    background: var(--white);
+    color: var(--sage);
     padding: 1rem 2rem;
     border-radius: var(--border-radius);
     text-decoration: none;
@@ -489,6 +490,7 @@ p {
 
 .about-cta:hover {
     background: var(--reseda-green);
+    color: var(--white);
     transform: translateY(-2px);
     box-shadow: var(--shadow-md);
 }
