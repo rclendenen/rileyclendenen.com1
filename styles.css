@@ -551,7 +551,7 @@ p {
 }
 
 .photo-slot:first-child img {
-    height: 250px;
+    height: 300px;
 }
 
 .photo-slot:hover img {
@@ -1260,7 +1260,7 @@ p {
     }
     
     .photo-slot:first-child img {
-        height: 200px;
+        height: 250px;
     }
 }
 
