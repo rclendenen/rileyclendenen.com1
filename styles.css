@@ -530,6 +530,8 @@ p {
 
 .photo-slot:first-child img {
     height: 250px;
+    object-fit: contain;
+    object-position: center top;
 }
 
 .photo-slot:hover img {
@@ -1171,6 +1173,8 @@ p {
     
     .photo-slot:first-child img {
         height: 200px;
+        object-fit: contain;
+        object-position: center top;
     }
 }
 
