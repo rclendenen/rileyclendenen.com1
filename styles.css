@@ -13,8 +13,8 @@
     --light-gray: #F5F5F5;     /* Subtle backgrounds */
     
     /* Typography */
-    --font-heading: 'Brown Sugar', cursive;
-    --font-body: 'Inter', sans-serif;
+    --font-heading: 'Gotham', sans-serif;
+    --font-body: 'Source Serif Pro', serif;
     
     /* Spacing */
     --section-padding: 5rem 0;
@@ -49,6 +49,7 @@ body {
     color: var(--deep-text);
     background-color: var(--timberwolf);
     overflow-x: hidden;
+    font-weight: 400;
 }
 
 .container {
@@ -62,7 +63,28 @@ h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-heading);
     font-weight: 600;
     line-height: 1.2;
-    color: var(--deep-text);
+    color: inherit;
+}
+
+/* Body Text */
+p, span, input, textarea, button {
+    font-family: var(--font-body);
+    font-weight: 400;
+    line-height: 1.6;
+    color: inherit;
+}
+
+/* Links */
+a {
+    font-family: var(--font-body);
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Form Headings */
+label, legend {
+    font-family: var(--font-heading);
+    font-weight: 500;
 }
 
 h1 { font-size: 3.5rem; }
