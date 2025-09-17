@@ -898,6 +898,39 @@ p {
     font-size: 1.1rem;
 }
 
+/* Pricing Options */
+.pricing-options {
+    margin: 1.5rem 0;
+    padding: 1rem;
+    background: var(--timberwolf);
+    border-radius: var(--border-radius);
+    border: 1px solid rgba(163, 177, 138, 0.2);
+}
+
+.pricing-option {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid rgba(163, 177, 138, 0.1);
+}
+
+.pricing-option:last-child {
+    border-bottom: none;
+}
+
+.option-label {
+    font-size: 0.9rem;
+    color: var(--deep-text);
+    font-weight: 500;
+}
+
+.option-price {
+    font-size: 0.9rem;
+    color: var(--sage);
+    font-weight: 600;
+}
+
 /* Contact Section */
 .contact {
     padding: var(--section-padding);
