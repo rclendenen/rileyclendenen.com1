@@ -1,0 +1,20 @@
+{
+  "name": "rileyclendenen-portfolio",
+  "version": "1.0.0",
+  "description": "Riley Clendenen's portfolio website",
+  "main": "index.html",
+  "scripts": {
+    "dev": "vercel dev",
+    "build": "echo 'No build step required for static site'",
+    "deploy": "vercel --prod"
+  },
+  "dependencies": {
+    "nodemailer": "^6.9.7"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "keywords": ["portfolio", "web-design", "remote-assistant"],
+  "author": "Riley Clendenen",
+  "license": "MIT"
+}
