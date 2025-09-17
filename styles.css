@@ -812,6 +812,11 @@ p {
     font-style: normal;
 }
 
+.why-cta {
+    text-align: center;
+    margin-top: 3rem;
+}
+
 .testimonial {
     background: var(--white);
     padding: 2rem;
