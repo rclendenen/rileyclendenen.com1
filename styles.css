@@ -713,9 +713,9 @@ p {
 
 .why-content {
     display: grid;
-    grid-template-columns: 2fr 1fr;
+    grid-template-columns: 1fr 1fr;
     gap: 4rem;
-    align-items: center;
+    align-items: start;
 }
 
 .why-features {
@@ -763,6 +763,53 @@ p {
     font-size: 0.95rem;
     line-height: 1.5;
     margin: 0;
+}
+
+.reviews-section {
+    background: var(--white);
+    padding: 2rem;
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--shadow-md);
+}
+
+.reviews-section h3 {
+    color: var(--deep-text);
+    font-size: 1.3rem;
+    margin: 0 0 1.5rem 0;
+    text-align: center;
+}
+
+.review-item {
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--light-gray);
+}
+
+.review-item:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.stars {
+    color: #ffd700;
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+}
+
+.review-item p {
+    color: var(--deep-text);
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin: 0 0 0.5rem 0;
+    font-style: italic;
+}
+
+.review-item cite {
+    color: var(--reseda-green);
+    font-size: 0.85rem;
+    font-weight: 500;
+    font-style: normal;
 }
 
 .testimonial {
@@ -1220,6 +1267,15 @@ p {
         flex-direction: column;
         gap: 2rem;
         text-align: center;
+    }
+    
+    .why-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .reviews-section {
+        margin-top: 2rem;
     }
 }
 
