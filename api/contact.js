@@ -13,18 +13,20 @@ export default async function handler(req, res) {
   }
 
   try {
-    // Create transporter using Gmail SMTP (you'll need to set up App Password)
+    // Create transporter using Yahoo SMTP
     const transporter = nodemailer.createTransporter({
-      service: 'gmail',
+      host: 'smtp.mail.yahoo.com',
+      port: 587,
+      secure: false, // true for 465, false for other ports
       auth: {
-        user: process.env.GMAIL_USER, // Your Gmail address
-        pass: process.env.GMAIL_APP_PASSWORD, // Gmail App Password
+        user: process.env.YAHOO_EMAIL, // Your Yahoo email address
+        pass: process.env.YAHOO_APP_PASSWORD, // Yahoo App Password
       },
     });
 
     // Email content
     const mailOptions = {
-      from: process.env.GMAIL_USER,
+      from: process.env.YAHOO_EMAIL,
       to: 'riley.clendenen@yahoo.com',
       subject: `New Contact Form Submission from ${name}`,
       html: `
