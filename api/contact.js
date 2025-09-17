@@ -22,15 +22,17 @@ export default async function handler(req, res) {
     timestamp: new Date().toISOString(),
   });
 
-  // For now, we'll just log the submission and return success
-  // You can integrate with email services like:
-  // - SendGrid
-  // - Mailgun
-  // - Nodemailer with Gmail
-  // - Formspree
-  // - Netlify Forms
+        // For now, we'll just log the submission and return success
+        // You can integrate with email services like:
+        // - SendGrid
+        // - Mailgun
+        // - Nodemailer with Gmail
+        // - Formspree
+        // - Netlify Forms
+        // 
+        // Email submissions will be sent to: rileybalch97@gmail.com
 
-  return res.status(200).json({ 
-    message: 'Thank you for your message! I will get back to you soon.' 
-  });
+        return res.status(200).json({ 
+          message: 'Thank you for your message! I will get back to you soon.' 
+        });
 }
