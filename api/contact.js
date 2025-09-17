@@ -30,7 +30,7 @@ export default async function handler(req, res) {
         // - Formspree
         // - Netlify Forms
         // 
-        // Email submissions will be sent to: rileybalch97@gmail.com
+        // Email submissions will be sent to: riley.clendenen@yahoo.com
 
         return res.status(200).json({ 
           message: 'Thank you for your message! I will get back to you soon.' 
