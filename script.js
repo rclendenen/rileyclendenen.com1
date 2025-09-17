@@ -90,8 +90,16 @@ if (contactForm) {
         submitBtn.textContent = 'Sending...';
         submitBtn.disabled = true;
         
-        // Simulate form submission (replace with actual form handling)
-        setTimeout(() => {
+        // Send form data to server
+        fetch('/api/contact', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data)
+        })
+        .then(response => response.json())
+        .then(result => {
             // Show success message
             contactForm.style.display = 'none';
             contactSuccess.style.display = 'block';
@@ -111,7 +119,17 @@ if (contactForm) {
                 contactForm.style.display = 'block';
                 contactSuccess.style.display = 'none';
             }, 5000);
-        }, 2000);
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            
+            // Reset button
+            submitBtn.textContent = originalText;
+            submitBtn.disabled = false;
+            
+            // Show error notification
+            showNotification('There was an error sending your message. Please try again or email me directly.', 'error');
+        });
     });
 }
 
