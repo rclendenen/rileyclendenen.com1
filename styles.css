@@ -555,7 +555,7 @@ p {
 }
 
 .photo-slot:first-child img {
-    height: 300px;
+    height: 250px;
     object-fit: cover;
     object-position: center;
     max-width: 100%;
@@ -1353,7 +1353,7 @@ p {
     }
     
     .photo-slot:first-child img {
-        height: 250px;
+        height: 200px;
         object-fit: cover;
         object-position: center;
         max-width: 100%;
