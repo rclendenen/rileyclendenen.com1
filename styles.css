@@ -1493,6 +1493,13 @@ p {
         margin: 0;
     }
     
+    .pricing-badge {
+        top: -15px;
+        padding: 0.7rem 1.5rem;
+        font-size: 0.9rem;
+        border-radius: 25px;
+    }
+    
     .section-title {
         margin-bottom: 1.5rem;
         font-size: 1.8rem;
@@ -1555,6 +1562,13 @@ p {
         padding: 0.7rem 1rem;
         font-size: 0.85rem;
         margin-top: 0.6rem;
+    }
+    
+    .pricing-badge {
+        top: -18px;
+        padding: 0.8rem 1.8rem;
+        font-size: 1rem;
+        border-radius: 30px;
     }
     
     .about-photos {
