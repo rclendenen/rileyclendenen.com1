@@ -1,17 +1,3 @@
 {
-  "version": 2,
-  "name": "rileyclendenen-portfolio",
-  "outputDirectory": ".",
-  "functions": {
-    "api/contact.js": {
-      "runtime": "@vercel/node@3.0.7"
-    }
-  },
-  "buildCommand": "echo 'No build required'",
-  "installCommand": "npm install",
-  "build": {
-    "env": {
-      "NODE_VERSION": "20.x"
-    }
-  }
+  "outputDirectory": "."
 }
