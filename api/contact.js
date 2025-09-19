@@ -22,6 +22,9 @@ export default async function handler(req, res) {
         user: process.env.YAHOO_EMAIL, // Your Yahoo email address
         pass: process.env.YAHOO_APP_PASSWORD, // Yahoo App Password
       },
+      tls: {
+        rejectUnauthorized: false
+      }
     });
 
     // Email content
@@ -89,6 +92,12 @@ export default async function handler(req, res) {
 
   } catch (error) {
     console.error('Error sending email:', error);
+    console.error('Error details:', {
+      message: error.message,
+      code: error.code,
+      response: error.response,
+      stack: error.stack
+    });
     
     // Log the submission even if email fails
     console.log('Contact form submission (email failed):', {
@@ -101,6 +110,7 @@ export default async function handler(req, res) {
       budget,
       timestamp: new Date().toISOString(),
       error: error.message,
+      errorCode: error.code,
     });
 
     return res.status(500).json({ 
