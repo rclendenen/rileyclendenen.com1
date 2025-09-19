@@ -1303,7 +1303,7 @@ p {
 
 @media (max-width: 768px) {
     :root {
-        --section-padding: 3rem 0;
+        --section-padding: 2rem 0;
         --container-padding: 0 1.5rem;
     }
     
@@ -1342,8 +1342,8 @@ p {
     
     .hero {
         background-attachment: scroll;
-        min-height: 70vh;
-        padding: 2rem 0;
+        min-height: 50vh;
+        padding: 1.5rem 0;
     }
     
     .hero-title {
@@ -1374,14 +1374,47 @@ p {
         height: 120px;
     }
     
-    .services-grid,
-    .portfolio-grid {
-        grid-template-columns: 1fr;
-        gap: 1.2rem;
+    .services-container {
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .services-grid {
+        display: flex;
+        transition: transform 0.3s ease;
+        gap: 1rem;
     }
     
     .service-card {
-        padding: 1.5rem;
+        flex: 0 0 100%;
+        padding: 1.2rem;
+        margin: 0;
+    }
+    
+    .carousel-nav {
+        display: flex;
+        justify-content: center;
+        gap: 0.5rem;
+        margin-top: 1rem;
+    }
+    
+    .carousel-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--sage);
+        opacity: 0.3;
+        cursor: pointer;
+        transition: opacity 0.3s ease;
+    }
+    
+    .carousel-dot.active {
+        opacity: 1;
+    }
+    
+    .portfolio-grid {
+        grid-template-columns: 1fr;
+        gap: 1.2rem;
     }
     
     .form-row {
@@ -1403,17 +1436,26 @@ p {
         margin-top: 1.5rem;
     }
     
+    .pricing-container {
+        position: relative;
+        overflow: hidden;
+    }
+    
     .pricing-grid {
-        gap: 1.2rem;
+        display: flex;
+        transition: transform 0.3s ease;
+        gap: 1rem;
     }
     
     .pricing-card {
-        padding: 1.5rem;
+        flex: 0 0 100%;
+        padding: 1.2rem;
+        margin: 0;
     }
     
     .section-title {
-        margin-bottom: 2rem;
-        font-size: 2rem;
+        margin-bottom: 1.5rem;
+        font-size: 1.8rem;
     }
     
     .form-buttons {
@@ -1426,13 +1468,13 @@ p {
 @media (max-width: 480px) {
     :root {
         --container-padding: 0 1rem;
-        --section-padding: 2.5rem 0;
+        --section-padding: 1.5rem 0;
     }
     
     .hero {
         background-attachment: scroll;
-        min-height: 60vh;
-        padding: 1.5rem 0;
+        min-height: 45vh;
+        padding: 1rem 0;
     }
     
     .hero-title {
@@ -1489,6 +1531,24 @@ p {
         height: 120px;
         object-fit: cover;
         object-position: center;
+    }
+}
+
+/* Desktop: Hide carousel navigation and show normal grid */
+@media (min-width: 769px) {
+    .carousel-nav {
+        display: none;
+    }
+    
+    .services-container,
+    .pricing-container {
+        overflow: visible;
+    }
+    
+    .services-grid,
+    .pricing-grid {
+        display: grid;
+        transform: none !important;
     }
 }
 

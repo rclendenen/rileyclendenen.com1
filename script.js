@@ -7,6 +7,76 @@ const navLinks = document.querySelector('.nav-links');
 const contactForm = document.getElementById('contact-form');
 const contactSuccess = document.getElementById('contact-success');
 
+// Carousel functionality
+const initCarousels = () => {
+    // Services carousel
+    const servicesContainer = document.querySelector('.services-container');
+    const servicesGrid = document.querySelector('.services-grid');
+    const servicesDots = document.querySelectorAll('.services-container .carousel-dot');
+    
+    // Pricing carousel
+    const pricingContainer = document.querySelector('.pricing-container');
+    const pricingGrid = document.querySelector('.pricing-grid');
+    const pricingDots = document.querySelectorAll('.pricing-container .carousel-dot');
+    
+    const setupCarousel = (container, grid, dots, cardClass) => {
+        if (!container || !grid || !dots.length) return;
+        
+        let currentSlide = 0;
+        const totalSlides = dots.length;
+        
+        const updateCarousel = (slideIndex) => {
+            const translateX = -slideIndex * 100;
+            grid.style.transform = `translateX(${translateX}%)`;
+            
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === slideIndex);
+            });
+        };
+        
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                currentSlide = index;
+                updateCarousel(currentSlide);
+            });
+        });
+        
+        // Touch/swipe support
+        let startX = 0;
+        let isDragging = false;
+        
+        container.addEventListener('touchstart', (e) => {
+            startX = e.touches[0].clientX;
+            isDragging = true;
+        });
+        
+        container.addEventListener('touchmove', (e) => {
+            if (!isDragging) return;
+            e.preventDefault();
+        });
+        
+        container.addEventListener('touchend', (e) => {
+            if (!isDragging) return;
+            isDragging = false;
+            
+            const endX = e.changedTouches[0].clientX;
+            const diffX = startX - endX;
+            
+            if (Math.abs(diffX) > 50) { // Minimum swipe distance
+                if (diffX > 0 && currentSlide < totalSlides - 1) {
+                    currentSlide++;
+                } else if (diffX < 0 && currentSlide > 0) {
+                    currentSlide--;
+                }
+                updateCarousel(currentSlide);
+            }
+        });
+    };
+    
+    setupCarousel(servicesContainer, servicesGrid, servicesDots, 'service-card');
+    setupCarousel(pricingContainer, pricingGrid, pricingDots, 'pricing-card');
+};
+
 // Mobile Navigation Toggle
 if (mobileMenuToggle) {
     const toggleMenu = () => {
@@ -389,6 +459,9 @@ window.addEventListener('scroll', debouncedScrollHandler);
 // Initialize everything when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
     console.log('Modern portfolio website loaded successfully!');
+    
+    // Initialize carousels
+    initCarousels();
     
     // Check for thank you parameters
     const urlParams = new URLSearchParams(window.location.search);
