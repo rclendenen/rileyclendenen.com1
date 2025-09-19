@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Project Form - Riley Clendenen</title>
+    <link rel="icon" type="image/png" href="bluebonnet background.png">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gotham:wght@300;400;500;600;700&family=Source+Serif+Pro:ital,wght@0,300;0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Project Form Page Specific Styles */
+        .form-container {
+            min-height: 100vh;
+            padding: 2rem;
+            background: linear-gradient(135deg, var(--timberwolf) 0%, var(--sage) 100%);
+        }
+
+        .form-content {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--white);
+            border-radius: var(--border-radius-lg);
+            padding: 3rem;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .form-title {
+            color: var(--sage);
+            text-align: center;
+            margin-bottom: 0.5rem;
+            font-size: 2.5rem;
+        }
+
+        .form-subtitle {
+            color: var(--deep-text);
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+            opacity: 0.8;
+        }
+
+        .form-section {
+            margin-bottom: 2.5rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid rgba(138, 167, 159, 0.2);
+        }
+
+        .form-section:last-of-type {
+            border-bottom: none;
+        }
+
+        .section-title {
+            color: var(--sage);
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+            border-bottom: 2px solid var(--sage);
+            padding-bottom: 0.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--deep-text);
+        }
+
+        .form-group label.required::after {
+            content: " *";
+            color: #e74c3c;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid rgba(138, 167, 159, 0.2);
+            border-radius: var(--border-radius);
+            font-family: var(--font-body);
+            font-size: 1rem;
+            transition: var(--transition);
+            background: var(--white);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--sage);
+            box-shadow: 0 0 0 3px rgba(138, 167, 159, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .checkbox-group {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 0.5rem;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .checkbox-item input[type="checkbox"] {
+            width: auto;
+            margin: 0;
+        }
+
+        .checkbox-item label {
+            margin: 0;
+            font-weight: 400;
+            cursor: pointer;
+        }
+
+        .radio-group {
+            display: flex;
+            gap: 2rem;
+            margin-top: 0.5rem;
+        }
+
+        .radio-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .radio-item input[type="radio"] {
+            width: auto;
+            margin: 0;
+        }
+
+        .radio-item label {
+            margin: 0;
+            font-weight: 400;
+            cursor: pointer;
+        }
+
+        .submit-section {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(138, 167, 159, 0.2);
+        }
+
+        .submit-btn {
+            background: var(--sage);
+            color: var(--white);
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: var(--border-radius);
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            margin-bottom: 1rem;
+        }
+
+        .submit-btn:hover {
+            background: var(--reseda-green);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .submit-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .success-message {
+            background: #d4edda;
+            color: #155724;
+            padding: 1rem;
+            border-radius: var(--border-radius);
+            margin-top: 1rem;
+            display: none;
+        }
+
+        .error-message {
+            background: #f8d7da;
+            color: #721c24;
+            padding: 1rem;
+            border-radius: var(--border-radius);
+            margin-top: 1rem;
+            display: none;
+        }
+
+        .back-section {
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            color: var(--sage);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            padding: 0.5rem 1rem;
+            border-radius: var(--border-radius);
+        }
+
+        .back-link:hover {
+            color: var(--reseda-green);
+            background: rgba(138, 167, 159, 0.1);
+        }
+
+        .back-link i {
+            margin-right: 0.5rem;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .form-container {
+                padding: 1rem;
+            }
+
+            .form-content {
+                padding: 2rem;
+            }
+
+            .form-title {
+                font-size: 2rem;
+            }
+
+            .checkbox-group {
+                grid-template-columns: 1fr;
+            }
+
+            .radio-group {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .form-content {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <div class="form-content">
+            <h1 class="form-title">Website Project Form</h1>
+            <p class="form-subtitle">Tell us about your project so we can create the perfect website for you</p>
+            
+            <form id="projectForm">
+                <!-- Client Information -->
+                <div class="form-section">
+                    <h2 class="section-title">Client Information</h2>
+                    
+                    <div class="form-group">
+                        <label for="fullName" class="required">Full Name</label>
+                        <input type="text" id="fullName" name="fullName" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email" class="required">Email Address</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone" class="required">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="company">Company/Organization Name (optional)</label>
+                        <input type="text" id="company" name="company">
+                    </div>
+                </div>
+
+                <!-- Project Overview -->
+                <div class="form-section">
+                    <h2 class="section-title">Project Overview</h2>
+                    
+                    <div class="form-group">
+                        <label for="purpose" class="required">Purpose of the website</label>
+                        <textarea id="purpose" name="purpose" placeholder="e.g., Business website, portfolio, e-commerce, blog, etc." required></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="description" class="required">Brief description of business/project</label>
+                        <textarea id="description" name="description" placeholder="Tell us about your business, what you do, and what makes you unique" required></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="audience" class="required">Target audience</label>
+                        <textarea id="audience" name="audience" placeholder="Who are your ideal customers or visitors?" required></textarea>
+                    </div>
+                </div>
+
+                <!-- Website Content & Features -->
+                <div class="form-section">
+                    <h2 class="section-title">Website Content & Features</h2>
+                    
+                    <div class="form-group">
+                        <label>Existing content ready?</label>
+                        <div class="radio-group">
+                            <div class="radio-item">
+                                <input type="radio" id="contentYes" name="contentReady" value="yes">
+                                <label for="contentYes">Yes</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="contentNo" name="contentReady" value="no">
+                                <label for="contentNo">No</label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Pages needed (select all that apply)</label>
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="pageHome" name="pages" value="Home">
+                                <label for="pageHome">Home</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="pageAbout" name="pages" value="About">
+                                <label for="pageAbout">About</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="pageServices" name="pages" value="Services">
+                                <label for="pageServices">Services</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="pageBlog" name="pages" value="Blog">
+                                <label for="pageBlog">Blog</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="pageContact" name="pages" value="Contact">
+                                <label for="pageContact">Contact</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="pageOther" name="pages" value="Other">
+                                <label for="pageOther">Other</label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Special features (select all that apply)</label>
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="featureStore" name="features" value="Online store">
+                                <label for="featureStore">Online store</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="featureContact" name="features" value="Contact form">
+                                <label for="featureContact">Contact form</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="featureBooking" name="features" value="Booking system">
+                                <label for="featureBooking">Booking system</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="featureGallery" name="features" value="Gallery">
+                                <label for="featureGallery">Gallery</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="featureBlog" name="features" value="Blog">
+                                <label for="featureBlog">Blog</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="featureMembership" name="features" value="Membership area">
+                                <label for="featureMembership">Membership area</label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Multilingual support needed?</label>
+                        <div class="radio-group">
+                            <div class="radio-item">
+                                <input type="radio" id="multilingualYes" name="multilingual" value="yes">
+                                <label for="multilingualYes">Yes</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="multilingualNo" name="multilingual" value="no">
+                                <label for="multilingualNo">No</label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="integrations">Third-party integrations needed</label>
+                        <textarea id="integrations" name="integrations" placeholder="e.g., Google Analytics, social media, payment processors, CRM systems, etc."></textarea>
+                    </div>
+                </div>
+
+                <!-- Design Preferences -->
+                <div class="form-section">
+                    <h2 class="section-title">Design Preferences</h2>
+                    
+                    <div class="form-group">
+                        <label for="colors">Preferred color scheme/brand colors</label>
+                        <textarea id="colors" name="colors" placeholder="Describe your brand colors or any specific color preferences"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="likedWebsites">Examples of websites you like (links)</label>
+                        <textarea id="likedWebsites" name="likedWebsites" placeholder="Please provide URLs of websites whose design you admire"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="dislikedWebsites">Websites you dislike (links)</label>
+                        <textarea id="dislikedWebsites" name="dislikedWebsites" placeholder="Please provide URLs of websites whose design you want to avoid"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Logo or brand assets ready?</label>
+                        <div class="radio-group">
+                            <div class="radio-item">
+                                <input type="radio" id="assetsYes" name="assetsReady" value="yes">
+                                <label for="assetsYes">Yes</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="assetsNo" name="assetsReady" value="no">
+                                <label for="assetsNo">No</label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="fonts">Preferred fonts or styles</label>
+                        <textarea id="fonts" name="fonts" placeholder="Any specific font preferences or style guidelines"></textarea>
+                    </div>
+                </div>
+
+                <!-- Domain & Hosting -->
+                <div class="form-section">
+                    <h2 class="section-title">Domain & Hosting</h2>
+                    
+                    <div class="form-group">
+                        <label>Do you already have a domain?</label>
+                        <div class="radio-group">
+                            <div class="radio-item">
+                                <input type="radio" id="domainYes" name="hasDomain" value="yes">
+                                <label for="domainYes">Yes</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="domainNo" name="hasDomain" value="no">
+                                <label for="domainNo">No</label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="domainName">If yes, what is your domain?</label>
+                        <input type="text" id="domainName" name="domainName" placeholder="e.g., yourbusiness.com">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Do you need help choosing a domain?</label>
+                        <div class="radio-group">
+                            <div class="radio-item">
+                                <input type="radio" id="helpYes" name="needDomainHelp" value="yes">
+                                <label for="helpYes">Yes</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="helpNo" name="needDomainHelp" value="no">
+                                <label for="helpNo">No</label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="domainLength">How long would you like to purchase the domain?</label>
+                        <select id="domainLength" name="domainLength">
+                            <option value="">Select duration</option>
+                            <option value="1 year">1 year</option>
+                            <option value="2 years">2 years</option>
+                            <option value="3 years">3 years</option>
+                            <option value="5 years">5 years</option>
+                            <option value="10 years">10 years</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Do you already have hosting or need hosting set up?</label>
+                        <div class="radio-group">
+                            <div class="radio-item">
+                                <input type="radio" id="hostingYes" name="hasHosting" value="yes">
+                                <label for="hostingYes">I have hosting</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="hostingNo" name="hasHosting" value="no">
+                                <label for="hostingNo">Need hosting set up</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Budget & Timeline -->
+                <div class="form-section">
+                    <h2 class="section-title">Budget & Timeline</h2>
+                    
+                    <div class="form-group">
+                        <label for="budget" class="required">Budget for the project</label>
+                        <select id="budget" name="budget" required>
+                            <option value="">Select budget range</option>
+                            <option value="Under $1,000">Under $1,000</option>
+                            <option value="$1,000 - $2,500">$1,000 - $2,500</option>
+                            <option value="$2,500 - $5,000">$2,500 - $5,000</option>
+                            <option value="$5,000 - $10,000">$5,000 - $10,000</option>
+                            <option value="Over $10,000">Over $10,000</option>
+                            <option value="Need to discuss">Need to discuss</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="timeline" class="required">Desired completion date</label>
+                        <input type="date" id="timeline" name="timeline" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="updates">How often you plan to update the website after launch</label>
+                        <select id="updates" name="updates">
+                            <option value="">Select frequency</option>
+                            <option value="Daily">Daily</option>
+                            <option value="Weekly">Weekly</option>
+                            <option value="Monthly">Monthly</option>
+                            <option value="Quarterly">Quarterly</option>
+                            <option value="As needed">As needed</option>
+                            <option value="Never">Never</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Additional Information -->
+                <div class="form-section">
+                    <h2 class="section-title">Additional Information</h2>
+                    
+                    <div class="form-group">
+                        <label for="additionalFeatures">Any other features or requests</label>
+                        <textarea id="additionalFeatures" name="additionalFeatures" placeholder="Any additional features, functionality, or special requests"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="additionalInfo">Anything else to share about business, brand, or goals</label>
+                        <textarea id="additionalInfo" name="additionalInfo" placeholder="Any additional information that would help us understand your vision"></textarea>
+                    </div>
+                </div>
+
+                <div class="submit-section">
+                    <button type="submit" class="submit-btn" id="submitBtn">
+                        Submit Project Form
+                    </button>
+
+                    <div class="success-message" id="successMessage">
+                        <i class="fas fa-check-circle"></i> Thank you for your detailed project information! We'll review your requirements and get back to you within 24 hours.
+                    </div>
+
+                    <div class="error-message" id="errorMessage">
+                        <i class="fas fa-exclamation-circle"></i> There was an error submitting your form. Please try again or email us directly.
+                    </div>
+                </div>
+            </form>
+
+            <div class="back-section">
+                <a href="index.html" class="back-link">
+                    <i class="fas fa-arrow-left"></i>
+                    Back to Home
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Form submission
+        document.getElementById('projectForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const submitBtn = document.getElementById('submitBtn');
+            const successMessage = document.getElementById('successMessage');
+            const errorMessage = document.getElementById('errorMessage');
+            
+            // Hide previous messages
+            successMessage.style.display = 'none';
+            errorMessage.style.display = 'none';
+            
+            // Disable submit button
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Submitting...';
+            
+            try {
+                // Collect form data
+                const formData = new FormData(e.target);
+                const data = Object.fromEntries(formData);
+                
+                // Process checkbox arrays
+                data.pages = Array.from(document.querySelectorAll('input[name="pages"]:checked')).map(cb => cb.value);
+                data.features = Array.from(document.querySelectorAll('input[name="features"]:checked')).map(cb => cb.value);
+                
+                // Add form type
+                data.formType = 'Website Project Form';
+                data.timestamp = new Date().toISOString();
+                
+                const response = await fetch('https://formspree.io/f/xeolyeea', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data)
+                });
+                
+                if (response.ok) {
+                    successMessage.style.display = 'block';
+                    e.target.reset();
+                } else {
+                    throw new Error('Form submission failed');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                errorMessage.style.display = 'block';
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Submit Project Form';
+            }
+        });
+    </script>
+</body>
+</html>
