@@ -12,9 +12,6 @@
   "dependencies": {
     "nodemailer": "^6.9.7"
   },
-  "engines": {
-    "node": ">=18.0.0"
-  },
   "keywords": ["portfolio", "web-design", "remote-assistant"],
   "author": "Riley Clendenen",
   "license": "MIT"
