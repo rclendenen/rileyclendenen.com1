@@ -109,7 +109,7 @@ if (contactForm) {
                 submitBtn.disabled = false;
                 
                 // Show notification
-                showNotification('Message sent successfully! I will get back to you soon.', 'success');
+                showNotification('Message sent successfully! I will get back to you soon. 🤍', 'success');
                 
                 // Reset form
                 contactForm.reset();
@@ -148,7 +148,6 @@ function showNotification(message, type = 'info') {
     notification.innerHTML = `
         <div class="notification-content">
             <span class="notification-message">${message}</span>
-            <button class="notification-close">×</button>
         </div>
     `;
     
@@ -183,12 +182,6 @@ function showNotification(message, type = 'info') {
         notification.style.transform = 'translateX(0)';
     }, 100);
     
-    // Close button functionality
-    const closeBtn = notification.querySelector('.notification-close');
-    closeBtn.addEventListener('click', () => {
-        notification.style.transform = 'translateX(100%)';
-        setTimeout(() => notification.remove(), 300);
-    });
     
     // Auto remove after 5 seconds
     setTimeout(() => {
