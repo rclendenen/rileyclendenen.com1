@@ -1,0 +1,27 @@
+{
+  "name": "Riley Clendenen - Web Designer & Remote Assistant",
+  "short_name": "Riley Clendenen",
+  "description": "Freelance web design and remote assistant services for authors, realtors, and small businesses. Fast, organized, honest, and ready to try solutions before saying no.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#A3B18A",
+  "theme_color": "#A3B18A",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "bluebonnet background.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "bluebonnet background.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["business", "productivity", "utilities"],
+  "lang": "en-US",
+  "dir": "ltr"
+}
