@@ -382,6 +382,19 @@ window.addEventListener('scroll', debouncedScrollHandler);
 document.addEventListener('DOMContentLoaded', () => {
     console.log('Modern portfolio website loaded successfully!');
     
+    // Check for review thank you parameter
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('review') === 'thankyou') {
+        // Show thank you notification
+        setTimeout(() => {
+            showNotification('Thank you for your feedback! Your review has been submitted successfully. 🤍', 'success');
+        }, 1000);
+        
+        // Clean up URL without reloading page
+        const newUrl = window.location.pathname;
+        window.history.replaceState({}, document.title, newUrl);
+    }
+    
     // Add smooth reveal animation to hero
     const heroContent = document.querySelector('.hero-content');
     if (heroContent) {

@@ -213,11 +213,6 @@
             <p class="review-subtitle">Your feedback helps me improve and helps others discover my services</p>
             
             <form id="reviewForm">
-                <div class="name-group">
-                    <label for="reviewerName" class="name-label">Your Name *</label>
-                    <input type="text" id="reviewerName" name="reviewerName" class="name-input" required>
-                </div>
-
                 <div class="rating-group">
                     <label class="rating-label">How would you rate your experience? *</label>
                     <div class="star-rating" id="starRating">
@@ -237,6 +232,11 @@
                         class="feedback-textarea" 
                         placeholder="Share details about your project, what you liked, or suggestions for improvement..."
                     ></textarea>
+                </div>
+
+                <div class="name-group">
+                    <label for="reviewerName" class="name-label">Your Name *</label>
+                    <input type="text" id="reviewerName" name="reviewerName" class="name-input" required>
                 </div>
 
                 <button type="submit" class="submit-btn" id="submitBtn">
@@ -365,11 +365,8 @@
                 });
                 
                 if (response.ok) {
-                    successMessage.style.display = 'block';
-                    document.getElementById('reviewForm').reset();
-                    selectedRating = 0;
-                    ratingInput.value = '0';
-                    updateStars();
+                    // Redirect to homepage with thank you message
+                    window.location.href = 'index.html?review=thankyou';
                 } else {
                     throw new Error('Form submission failed');
                 }
