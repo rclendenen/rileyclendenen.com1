@@ -7,9 +7,6 @@
       "runtime": "@vercel/node@3.0.7"
     }
   },
-  "build": {
-    "env": {
-      "NODE_VERSION": "18.x"
-    }
-  }
+  "buildCommand": "echo 'No build required'",
+  "installCommand": "npm install"
 }
