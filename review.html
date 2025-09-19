@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leave a Review - Riley Clendenen</title>
+    <link rel="icon" type="image/png" href="bluebonnet background.png">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gotham:wght@300;400;500;600;700&family=Source+Serif+Pro:ital,wght@0,300;0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Review Page Specific Styles */
+        .review-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            background: linear-gradient(135deg, var(--timberwolf) 0%, var(--sage) 100%);
+        }
+
+        .review-card {
+            background: var(--white);
+            border-radius: var(--border-radius-lg);
+            padding: 3rem;
+            box-shadow: var(--shadow-lg);
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .review-title {
+            color: var(--sage);
+            margin-bottom: 0.5rem;
+            font-size: 2.5rem;
+        }
+
+        .review-subtitle {
+            color: var(--deep-text);
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+            opacity: 0.8;
+        }
+
+        .star-rating {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .star {
+            font-size: 2.5rem;
+            color: #ddd;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .star:hover,
+        .star.active {
+            color: #ffd700;
+            transform: scale(1.1);
+        }
+
+        .star:hover ~ .star {
+            color: #ddd;
+        }
+
+        .rating-label {
+            display: block;
+            margin-bottom: 1rem;
+            font-weight: 600;
+            color: var(--deep-text);
+        }
+
+        .feedback-group {
+            margin-bottom: 2rem;
+            text-align: left;
+        }
+
+        .feedback-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--deep-text);
+        }
+
+        .feedback-textarea {
+            width: 100%;
+            min-height: 120px;
+            padding: 1rem;
+            border: 2px solid rgba(138, 167, 159, 0.2);
+            border-radius: var(--border-radius);
+            font-family: var(--font-body);
+            font-size: 1rem;
+            resize: vertical;
+            transition: var(--transition);
+        }
+
+        .feedback-textarea:focus {
+            outline: none;
+            border-color: var(--sage);
+            box-shadow: 0 0 0 3px rgba(138, 167, 159, 0.1);
+        }
+
+        .submit-btn {
+            background: var(--sage);
+            color: var(--white);
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: var(--border-radius);
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            margin-bottom: 1rem;
+        }
+
+        .submit-btn:hover {
+            background: var(--reseda-green);
+            transform: translateY(-2px);
+        }
+
+        .submit-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .success-message {
+            background: #d4edda;
+            color: #155724;
+            padding: 1rem;
+            border-radius: var(--border-radius);
+            margin-top: 1rem;
+            display: none;
+        }
+
+        .error-message {
+            background: #f8d7da;
+            color: #721c24;
+            padding: 1rem;
+            border-radius: var(--border-radius);
+            margin-top: 1rem;
+            display: none;
+        }
+
+        .back-link {
+            color: var(--sage);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .back-link:hover {
+            color: var(--reseda-green);
+            text-decoration: underline;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .review-container {
+                padding: 1rem;
+            }
+
+            .review-card {
+                padding: 2rem;
+            }
+
+            .review-title {
+                font-size: 2rem;
+            }
+
+            .star {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="review-container">
+        <div class="review-card">
+            <h1 class="review-title">Leave a Review</h1>
+            <p class="review-subtitle">Your feedback helps me improve and helps others discover my services</p>
+            
+            <form id="reviewForm">
+                <div class="rating-group">
+                    <label class="rating-label">How would you rate your experience?</label>
+                    <div class="star-rating" id="starRating">
+                        <i class="fas fa-star star" data-rating="1"></i>
+                        <i class="fas fa-star star" data-rating="2"></i>
+                        <i class="fas fa-star star" data-rating="3"></i>
+                        <i class="fas fa-star star" data-rating="4"></i>
+                        <i class="fas fa-star star" data-rating="5"></i>
+                    </div>
+                </div>
+
+                <div class="feedback-group">
+                    <label for="feedback" class="feedback-label">Tell us about your experience (optional)</label>
+                    <textarea 
+                        id="feedback" 
+                        name="feedback" 
+                        class="feedback-textarea" 
+                        placeholder="Share details about your project, what you liked, or suggestions for improvement..."
+                    ></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn" id="submitBtn">
+                    Submit Review
+                </button>
+
+                <div class="success-message" id="successMessage">
+                    <i class="fas fa-check-circle"></i> Thank you for your review! Your feedback has been submitted successfully.
+                </div>
+
+                <div class="error-message" id="errorMessage">
+                    <i class="fas fa-exclamation-circle"></i> There was an error submitting your review. Please try again or email me directly.
+                </div>
+            </form>
+
+            <p style="margin-top: 2rem;">
+                <a href="index.html" class="back-link">
+                    <i class="fas fa-arrow-left"></i> Back to Home
+                </a>
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // Star Rating Functionality
+        const stars = document.querySelectorAll('.star');
+        const ratingInput = document.createElement('input');
+        ratingInput.type = 'hidden';
+        ratingInput.name = 'rating';
+        ratingInput.value = '0';
+        document.getElementById('reviewForm').appendChild(ratingInput);
+
+        let selectedRating = 0;
+
+        stars.forEach((star, index) => {
+            star.addEventListener('click', () => {
+                selectedRating = index + 1;
+                ratingInput.value = selectedRating;
+                updateStars();
+            });
+
+            star.addEventListener('mouseenter', () => {
+                highlightStars(index + 1);
+            });
+        });
+
+        document.getElementById('starRating').addEventListener('mouseleave', () => {
+            updateStars();
+        });
+
+        function highlightStars(rating) {
+            stars.forEach((star, index) => {
+                if (index < rating) {
+                    star.classList.add('active');
+                } else {
+                    star.classList.remove('active');
+                }
+            });
+        }
+
+        function updateStars() {
+            stars.forEach((star, index) => {
+                if (index < selectedRating) {
+                    star.classList.add('active');
+                } else {
+                    star.classList.remove('active');
+                }
+            });
+        }
+
+        // Form Submission
+        document.getElementById('reviewForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const submitBtn = document.getElementById('submitBtn');
+            const successMessage = document.getElementById('successMessage');
+            const errorMessage = document.getElementById('errorMessage');
+            const feedback = document.getElementById('feedback').value;
+            
+            // Hide previous messages
+            successMessage.style.display = 'none';
+            errorMessage.style.display = 'none';
+            
+            // Validate rating
+            if (selectedRating === 0) {
+                errorMessage.textContent = 'Please select a rating before submitting.';
+                errorMessage.style.display = 'block';
+                return;
+            }
+            
+            // Disable submit button
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Submitting...';
+            
+            try {
+                const formData = {
+                    rating: selectedRating,
+                    feedback: feedback,
+                    review_type: 'Website Review',
+                    timestamp: new Date().toISOString()
+                };
+                
+                const response = await fetch('https://formspree.io/f/xeolyeea', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(formData)
+                });
+                
+                if (response.ok) {
+                    successMessage.style.display = 'block';
+                    document.getElementById('reviewForm').reset();
+                    selectedRating = 0;
+                    ratingInput.value = '0';
+                    updateStars();
+                } else {
+                    throw new Error('Form submission failed');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                errorMessage.style.display = 'block';
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Submit Review';
+            }
+        });
+    </script>
+</body>
+</html>
