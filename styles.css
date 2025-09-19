@@ -180,6 +180,26 @@ p {
     letter-spacing: 0.5px;
 }
 
+.nav-cta-btn {
+    background: var(--sage);
+    color: var(--white);
+    padding: 0.6rem 1.2rem;
+    border-radius: var(--border-radius);
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: var(--transition);
+    border: 2px solid var(--sage);
+}
+
+.nav-cta-btn:hover {
+    background: var(--reseda-green);
+    border-color: var(--reseda-green);
+    color: var(--white);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-sm);
+}
+
 .mobile-menu-toggle {
     display: none;
     flex-direction: column;
