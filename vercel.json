@@ -1,4 +1,5 @@
 {
   "version": 2,
-  "name": "rileyclendenen-portfolio"
+  "name": "rileyclendenen-portfolio",
+  "outputDirectory": "."
 }
