@@ -1487,6 +1487,13 @@ p {
         gap: 1rem;
     }
     
+    .pricing-item-wrapper {
+        flex: 0 0 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
     .pricing-card {
         flex: 0 0 100%;
         padding: 1.2rem;
@@ -1494,10 +1501,15 @@ p {
     }
     
     .pricing-badge {
-        top: -12px;
+        position: relative;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        margin-bottom: 1rem;
         padding: 0.5rem 1rem;
         font-size: 0.8rem;
         border-radius: 18px;
+        display: inline-block;
     }
     
     .pricing-card.featured {
@@ -1569,10 +1581,15 @@ p {
     }
     
     .pricing-badge {
-        top: -12px;
+        position: relative;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        margin-bottom: 1rem;
         padding: 0.5rem 1rem;
         font-size: 0.8rem;
         border-radius: 18px;
+        display: inline-block;
     }
     
     .pricing-card.featured {
