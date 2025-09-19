@@ -555,7 +555,7 @@ p {
 }
 
 .photo-slot:first-child img {
-    height: 250px;
+    height: 300px;
     object-fit: cover;
     object-position: center;
     max-width: 100%;
@@ -565,6 +565,12 @@ p {
 
 .photo-slot:hover img {
     transform: scale(1.05);
+}
+
+/* Special hover effect for smaller photos to show full image */
+.photo-slot:not(:first-child):hover img {
+    object-fit: contain;
+    transform: scale(1.1);
 }
 
 .photo-label {
@@ -1353,7 +1359,7 @@ p {
     }
     
     .photo-slot:first-child img {
-        height: 200px;
+        height: 250px;
         object-fit: cover;
         object-position: center;
         max-width: 100%;
