@@ -4,9 +4,14 @@
   "outputDirectory": ".",
   "functions": {
     "api/contact.js": {
-      "runtime": "nodejs20.x"
+      "runtime": "@vercel/node@3.0.7"
     }
   },
   "buildCommand": "echo 'No build required'",
-  "installCommand": "npm install"
+  "installCommand": "npm install",
+  "build": {
+    "env": {
+      "NODE_VERSION": "20.x"
+    }
+  }
 }
