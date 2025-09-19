@@ -68,6 +68,33 @@
             color: #ddd;
         }
 
+        .name-group {
+            margin-bottom: 2rem;
+        }
+
+        .name-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--deep-text);
+        }
+
+        .name-input {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid rgba(138, 167, 159, 0.2);
+            border-radius: var(--border-radius);
+            font-family: var(--font-body);
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .name-input:focus {
+            outline: none;
+            border-color: var(--sage);
+            box-shadow: 0 0 0 3px rgba(138, 167, 159, 0.1);
+        }
+
         .rating-label {
             display: block;
             margin-bottom: 1rem;
@@ -186,8 +213,13 @@
             <p class="review-subtitle">Your feedback helps me improve and helps others discover my services</p>
             
             <form id="reviewForm">
+                <div class="name-group">
+                    <label for="reviewerName" class="name-label">Your Name *</label>
+                    <input type="text" id="reviewerName" name="reviewerName" class="name-input" required>
+                </div>
+
                 <div class="rating-group">
-                    <label class="rating-label">How would you rate your experience?</label>
+                    <label class="rating-label">How would you rate your experience? *</label>
                     <div class="star-rating" id="starRating">
                         <i class="fas fa-star star" data-rating="1"></i>
                         <i class="fas fa-star star" data-rating="2"></i>
@@ -297,7 +329,14 @@
             successMessage.style.display = 'none';
             errorMessage.style.display = 'none';
             
-            // Validate rating
+            // Validate name and rating
+            const name = document.getElementById('reviewerName').value.trim();
+            if (!name) {
+                errorMessage.textContent = 'Please enter your name before submitting.';
+                errorMessage.style.display = 'block';
+                return;
+            }
+            
             if (selectedRating === 0) {
                 errorMessage.textContent = 'Please select a rating before submitting.';
                 errorMessage.style.display = 'block';
@@ -310,6 +349,7 @@
             
             try {
                 const formData = {
+                    name: name,
                     rating: selectedRating,
                     feedback: feedback,
                     review_type: 'Website Review',

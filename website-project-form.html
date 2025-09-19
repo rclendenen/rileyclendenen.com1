@@ -259,7 +259,7 @@
     <div class="form-container">
         <div class="form-content">
             <h1 class="form-title">Website Project Form</h1>
-            <p class="form-subtitle">Tell us about your project so we can create the perfect website for you</p>
+            <p class="form-subtitle">Tell me about your project so I can create the perfect website for you</p>
             
             <form id="projectForm">
                 <!-- Client Information -->
@@ -302,8 +302,8 @@
                     </div>
                     
                     <div class="form-group">
-                        <label for="audience" class="required">Target audience</label>
-                        <textarea id="audience" name="audience" placeholder="Who are your ideal customers or visitors?" required></textarea>
+                        <label for="audience">Target audience</label>
+                        <textarea id="audience" name="audience" placeholder="Who are your ideal customers or visitors?"></textarea>
                     </div>
                 </div>
 
@@ -341,8 +341,12 @@
                                 <label for="pageServices">Services</label>
                             </div>
                             <div class="checkbox-item">
-                                <input type="checkbox" id="pageBlog" name="pages" value="Blog">
-                                <label for="pageBlog">Blog</label>
+                                <input type="checkbox" id="pageReviews" name="pages" value="Reviews">
+                                <label for="pageReviews">Reviews</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="pagePricing" name="pages" value="Pricing">
+                                <label for="pagePricing">Pricing</label>
                             </div>
                             <div class="checkbox-item">
                                 <input type="checkbox" id="pageContact" name="pages" value="Contact">
@@ -361,10 +365,6 @@
                             <div class="checkbox-item">
                                 <input type="checkbox" id="featureStore" name="features" value="Online store">
                                 <label for="featureStore">Online store</label>
-                            </div>
-                            <div class="checkbox-item">
-                                <input type="checkbox" id="featureContact" name="features" value="Contact form">
-                                <label for="featureContact">Contact form</label>
                             </div>
                             <div class="checkbox-item">
                                 <input type="checkbox" id="featureBooking" name="features" value="Booking system">
@@ -439,6 +439,13 @@
                     </div>
                     
                     <div class="form-group">
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="createLogo" name="createLogo" value="yes">
+                            <label for="createLogo">Let's make one</label>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
                         <label for="fonts">Preferred fonts or styles</label>
                         <textarea id="fonts" name="fonts" placeholder="Any specific font preferences or style guidelines"></textarea>
                     </div>
@@ -468,17 +475,8 @@
                     </div>
                     
                     <div class="form-group">
-                        <label>Do you need help choosing a domain?</label>
-                        <div class="radio-group">
-                            <div class="radio-item">
-                                <input type="radio" id="helpYes" name="needDomainHelp" value="yes">
-                                <label for="helpYes">Yes</label>
-                            </div>
-                            <div class="radio-item">
-                                <input type="radio" id="helpNo" name="needDomainHelp" value="no">
-                                <label for="helpNo">No</label>
-                            </div>
-                        </div>
+                        <label for="domainProvider">If yes, where is your domain purchased?</label>
+                        <input type="text" id="domainProvider" name="domainProvider" placeholder="e.g., GoDaddy, Namecheap, Google Domains, etc.">
                     </div>
                     
                     <div class="form-group">
@@ -516,11 +514,10 @@
                         <label for="budget" class="required">Budget for the project</label>
                         <select id="budget" name="budget" required>
                             <option value="">Select budget range</option>
-                            <option value="Under $1,000">Under $1,000</option>
+                            <option value="Under $500">Under $500</option>
+                            <option value="$500 - $1,000">$500 - $1,000</option>
                             <option value="$1,000 - $2,500">$1,000 - $2,500</option>
                             <option value="$2,500 - $5,000">$2,500 - $5,000</option>
-                            <option value="$5,000 - $10,000">$5,000 - $10,000</option>
-                            <option value="Over $10,000">Over $10,000</option>
                             <option value="Need to discuss">Need to discuss</option>
                         </select>
                     </div>
