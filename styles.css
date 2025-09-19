@@ -1494,10 +1494,14 @@ p {
     }
     
     .pricing-badge {
-        top: -15px;
-        padding: 0.7rem 1.5rem;
-        font-size: 0.9rem;
-        border-radius: 25px;
+        top: -20px;
+        padding: 0.6rem 1.2rem;
+        font-size: 0.85rem;
+        border-radius: 20px;
+    }
+    
+    .pricing-card.featured {
+        margin-top: 1.5rem;
     }
     
     .section-title {
@@ -1565,10 +1569,14 @@ p {
     }
     
     .pricing-badge {
-        top: -18px;
-        padding: 0.8rem 1.8rem;
-        font-size: 1rem;
-        border-radius: 30px;
+        top: -22px;
+        padding: 0.5rem 1rem;
+        font-size: 0.8rem;
+        border-radius: 18px;
+    }
+    
+    .pricing-card.featured {
+        margin-top: 1.8rem;
     }
     
     .about-photos {
