@@ -386,9 +386,54 @@ const debouncedScrollHandler = debounce(() => {
 
 window.addEventListener('scroll', debouncedScrollHandler);
 
+// Web Share API functionality
+function initWebShare() {
+    const shareButton = document.getElementById('shareButton');
+    
+    if (shareButton && navigator.share) {
+        // Show share button on mobile devices that support Web Share API
+        shareButton.style.display = 'inline-flex';
+        shareButton.style.alignItems = 'center';
+        shareButton.style.gap = '0.5rem';
+        
+        shareButton.addEventListener('click', async () => {
+            try {
+                await navigator.share({
+                    title: 'Riley Clendenen - Web Designer & Remote Assistant',
+                    text: 'Freelance web design and remote assistant services for authors, realtors, and small businesses. Fast, organized, honest, and ready to try solutions before saying no.',
+                    url: window.location.href
+                });
+                console.log('Page shared successfully');
+            } catch (error) {
+                if (error.name !== 'AbortError') {
+                    console.error('Error sharing the page:', error);
+                    // Fallback to copying URL to clipboard
+                    fallbackShare();
+                }
+            }
+        });
+    }
+}
+
+// Fallback share function for browsers that don't support Web Share API
+function fallbackShare() {
+    if (navigator.clipboard) {
+        navigator.clipboard.writeText(window.location.href).then(() => {
+            showNotification('Link copied to clipboard!', 'success');
+        }).catch(() => {
+            showNotification('Unable to copy link. Please copy manually.', 'error');
+        });
+    } else {
+        showNotification('Please copy the URL manually: ' + window.location.href, 'info');
+    }
+}
+
 // Initialize everything when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
     console.log('Modern portfolio website loaded successfully!');
+    
+    // Initialize Web Share API
+    initWebShare();
     
     // Check for thank you parameters
     const urlParams = new URLSearchParams(window.location.search);
