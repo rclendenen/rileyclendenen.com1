@@ -619,8 +619,8 @@
                 });
                 
                 if (response.ok) {
-                    successMessage.style.display = 'block';
-                    e.target.reset();
+                    // Redirect to homepage with thank you message
+                    window.location.href = 'index.html?project=thankyou';
                 } else {
                     throw new Error('Form submission failed');
                 }
