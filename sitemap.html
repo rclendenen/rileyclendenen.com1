@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Site Map - Riley Clendenen</title>
+    <link rel="icon" type="image/png" href="bluebonnet background.png">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gotham:wght@300;400;500;600;700&family=Source+Serif+Pro:ital,wght@0,300;0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Sitemap Page Specific Styles */
+        .sitemap-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            background: linear-gradient(135deg, var(--timberwolf) 0%, var(--sage) 100%);
+        }
+
+        .sitemap-card {
+            background: var(--white);
+            border-radius: var(--border-radius-lg);
+            padding: 3rem;
+            box-shadow: var(--shadow-lg);
+            max-width: 600px;
+            width: 100%;
+        }
+
+        .sitemap-title {
+            color: var(--sage);
+            text-align: center;
+            margin-bottom: 0.5rem;
+            font-size: 2.5rem;
+        }
+
+        .sitemap-subtitle {
+            color: var(--deep-text);
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+            opacity: 0.8;
+        }
+
+        .sitemap-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .sitemap-item {
+            margin-bottom: 1rem;
+        }
+
+        .sitemap-link {
+            display: flex;
+            align-items: center;
+            padding: 1rem 1.5rem;
+            background: var(--timberwolf);
+            border: 2px solid rgba(138, 167, 159, 0.1);
+            border-radius: var(--border-radius);
+            color: var(--deep-text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .sitemap-link:hover {
+            background: var(--sage);
+            color: var(--white);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--sage);
+        }
+
+        .sitemap-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .sitemap-link:hover::before {
+            left: 100%;
+        }
+
+        .sitemap-icon {
+            margin-right: 1rem;
+            font-size: 1.2rem;
+            width: 20px;
+            text-align: center;
+        }
+
+        .sitemap-text {
+            flex: 1;
+        }
+
+        .back-section {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(138, 167, 159, 0.2);
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            color: var(--sage);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            padding: 0.5rem 1rem;
+            border-radius: var(--border-radius);
+        }
+
+        .back-link:hover {
+            color: var(--reseda-green);
+            background: rgba(138, 167, 159, 0.1);
+        }
+
+        .back-link i {
+            margin-right: 0.5rem;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .sitemap-container {
+                padding: 1rem;
+            }
+
+            .sitemap-card {
+                padding: 2rem;
+            }
+
+            .sitemap-title {
+                font-size: 2rem;
+            }
+
+            .sitemap-link {
+                padding: 0.8rem 1rem;
+                font-size: 0.9rem;
+            }
+
+            .sitemap-icon {
+                font-size: 1rem;
+                margin-right: 0.8rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .sitemap-card {
+                padding: 1.5rem;
+            }
+
+            .sitemap-link {
+                padding: 0.7rem 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="sitemap-container">
+        <div class="sitemap-card">
+            <h1 class="sitemap-title">Site Map</h1>
+            <p class="sitemap-subtitle">Navigate to any page on the website</p>
+            
+            <nav role="navigation" aria-label="Site navigation">
+                <ul class="sitemap-list">
+                    <li class="sitemap-item">
+                        <a href="index.html" class="sitemap-link">
+                            <i class="fas fa-home sitemap-icon"></i>
+                            <span class="sitemap-text">Home</span>
+                        </a>
+                    </li>
+                    
+                    <li class="sitemap-item">
+                        <a href="index.html#about" class="sitemap-link">
+                            <i class="fas fa-user sitemap-icon"></i>
+                            <span class="sitemap-text">About Me</span>
+                        </a>
+                    </li>
+                    
+                    <li class="sitemap-item">
+                        <a href="index.html#services" class="sitemap-link">
+                            <i class="fas fa-cogs sitemap-icon"></i>
+                            <span class="sitemap-text">Services / What I Do</span>
+                        </a>
+                    </li>
+                    
+                    <li class="sitemap-item">
+                        <a href="index.html#why-choose" class="sitemap-link">
+                            <i class="fas fa-star sitemap-icon"></i>
+                            <span class="sitemap-text">Why Choose Me</span>
+                        </a>
+                    </li>
+                    
+                    <li class="sitemap-item">
+                        <a href="index.html#portfolio" class="sitemap-link">
+                            <i class="fas fa-briefcase sitemap-icon"></i>
+                            <span class="sitemap-text">Portfolio / Some of My Work</span>
+                        </a>
+                    </li>
+                    
+                    <li class="sitemap-item">
+                        <a href="index.html#pricing" class="sitemap-link">
+                            <i class="fas fa-dollar-sign sitemap-icon"></i>
+                            <span class="sitemap-text">Pricing</span>
+                        </a>
+                    </li>
+                    
+                    <li class="sitemap-item">
+                        <a href="index.html#contact" class="sitemap-link">
+                            <i class="fas fa-envelope sitemap-icon"></i>
+                            <span class="sitemap-text">Contact</span>
+                        </a>
+                    </li>
+                    
+                    <li class="sitemap-item">
+                        <a href="review.html" class="sitemap-link">
+                            <i class="fas fa-star-half-alt sitemap-icon"></i>
+                            <span class="sitemap-text">Leave a Review</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="back-section">
+                <a href="index.html" class="back-link">
+                    <i class="fas fa-arrow-left"></i>
+                    Back to Home
+                </a>
+                
+                <div style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid rgba(138, 167, 159, 0.2);">
+                    <p style="color: var(--deep-text); opacity: 0.7; font-size: 0.9rem;">
+                        &copy; 2025 Riley Clendenen | 
+                        <a href="privacy.html" style="color: var(--sage); text-decoration: none;">Privacy</a> | 
+                        <a href="terms.html" style="color: var(--sage); text-decoration: none;">Terms</a> | 
+                        <a href="sitemap.html" style="color: var(--sage); text-decoration: none;">Sitemap</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add click animation to sitemap links
+        document.querySelectorAll('.sitemap-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                // Add a subtle click effect
+                this.style.transform = 'scale(0.98)';
+                setTimeout(() => {
+                    this.style.transform = '';
+                }, 150);
+            });
+        });
+    </script>
+</body>
+</html>
