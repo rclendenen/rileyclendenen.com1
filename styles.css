@@ -371,29 +371,6 @@ p {
     box-shadow: var(--shadow-md);
 }
 
-/* Share Button Specific Styles */
-#shareButton {
-    background: var(--timberwolf);
-    color: var(--deep-text);
-    border: 2px solid var(--timberwolf);
-    cursor: pointer;
-    font-family: var(--font-body);
-    font-size: 1rem;
-    font-weight: 600;
-    transition: var(--transition);
-}
-
-#shareButton:hover {
-    background: var(--sage);
-    color: var(--white);
-    border-color: var(--sage);
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-sm);
-}
-
-#shareButton i {
-    font-size: 0.9rem;
-}
 
 /* Section Titles */
 .section-title {
