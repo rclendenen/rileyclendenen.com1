@@ -601,6 +601,7 @@ p {
     max-height: 100%;
     image-rendering: auto;
     transition: var(--transition);
+    aspect-ratio: 1;
 }
 
 .photo-slot:first-child img {

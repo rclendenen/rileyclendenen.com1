@@ -39,6 +39,15 @@ const initCarousels = () => {
                 currentSlide = index;
                 updateCarousel(currentSlide);
             });
+            
+            // Keyboard navigation support
+            dot.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    currentSlide = index;
+                    updateCarousel(currentSlide);
+                }
+            });
         });
         
         // Touch/swipe support

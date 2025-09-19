@@ -125,13 +125,13 @@
                 </div>
                 <div class="about-photos">
                     <div class="photo-slot">
-                        <img src="headshot attempt 1.jpg" alt="Riley Clendenen - Professional headshot" loading="lazy">
+                        <img src="headshot attempt 1.jpg" alt="Riley Clendenen - Professional headshot" loading="lazy" width="300" height="300">
                     </div>
                     <div class="photo-slot">
-                        <img src="family photo march 25 3.jpg" alt="Riley's family - March 2025" loading="lazy">
+                        <img src="family photo march 25 3.jpg" alt="Riley's family - March 2025" loading="lazy" width="200" height="200">
                     </div>
                     <div class="photo-slot">
-                        <img src="family photo march 25.jpg" alt="Riley's family - March 2025" loading="lazy">
+                        <img src="family photo march 25.jpg" alt="Riley's family - March 2025" loading="lazy" width="200" height="200">
                     </div>
                 </div>
             </div>
@@ -142,8 +142,8 @@
     <section id="services" class="services">
         <div class="container">
             <h2 class="section-title">What I Do</h2>
-            <div class="services-container">
-                <div class="services-grid">
+            <div class="services-container" role="region" aria-label="Services carousel">
+                <div class="services-grid" role="tabpanel" aria-live="polite">
                     <div class="service-card">
                         <div class="service-icon">
                             <i class="fas fa-laptop-code"></i>
@@ -190,10 +190,10 @@
                         <a href="#contact" class="service-cta">Get Started</a>
                     </div>
                 </div>
-                <div class="carousel-nav">
-                    <div class="carousel-dot active" data-slide="0"></div>
-                    <div class="carousel-dot" data-slide="1"></div>
-                    <div class="carousel-dot" data-slide="2"></div>
+                <div class="carousel-nav" role="tablist" aria-label="Services navigation">
+                    <div class="carousel-dot active" data-slide="0" role="tab" aria-label="Web Design service" tabindex="0"></div>
+                    <div class="carousel-dot" data-slide="1" role="tab" aria-label="Remote Assistant service" tabindex="0"></div>
+                    <div class="carousel-dot" data-slide="2" role="tab" aria-label="Website Maintenance service" tabindex="0"></div>
                 </div>
             </div>
         </div>
@@ -206,7 +206,7 @@
             <div class="portfolio-grid">
                 <div class="portfolio-item">
                     <div class="portfolio-image">
-                        <img src="elizabethkgreen.com 2.png" alt="Author Landing Page" loading="lazy">
+                        <img src="elizabethkgreen.com 2.png" alt="Author Landing Page" loading="lazy" width="400" height="300">
                         <div class="portfolio-overlay">
                             <div class="portfolio-links">
                                 <a href="https://www.elizabethkgreen.com/" class="portfolio-link">View Live</a>
@@ -225,7 +225,7 @@
                 </div>
                 <div class="portfolio-item">
                     <div class="portfolio-image">
-                        <img src="manesbymiriam.com.png" alt="Stylist Website" loading="lazy">
+                        <img src="manesbymiriam.com.png" alt="Stylist Website" loading="lazy" width="400" height="300">
                         <div class="portfolio-overlay">
                             <div class="portfolio-links">
                                 <a href="https://manesbymiriam.com/" class="portfolio-link">View Live</a>
@@ -332,8 +332,8 @@
         <div class="container">
             <h2 class="section-title">Simple, Transparent Pricing</h2>
             <p class="pricing-subtitle">No hidden fees, no surprises. Just honest pricing for quality work.</p>
-            <div class="pricing-container">
-                <div class="pricing-grid">
+            <div class="pricing-container" role="region" aria-label="Pricing carousel">
+                <div class="pricing-grid" role="tabpanel" aria-live="polite">
                     <div class="pricing-card">
                         <div class="pricing-header">
                             <h3>Remote Assistant</h3>
@@ -401,10 +401,10 @@
                         <a href="#contact" class="pricing-cta">Get Started</a>
                     </div>
                 </div>
-                <div class="carousel-nav">
-                    <div class="carousel-dot active" data-slide="0"></div>
-                    <div class="carousel-dot" data-slide="1"></div>
-                    <div class="carousel-dot" data-slide="2"></div>
+                <div class="carousel-nav" role="tablist" aria-label="Pricing navigation">
+                    <div class="carousel-dot active" data-slide="0" role="tab" aria-label="Remote Assistant pricing" tabindex="0"></div>
+                    <div class="carousel-dot" data-slide="1" role="tab" aria-label="Web Design pricing" tabindex="0"></div>
+                    <div class="carousel-dot" data-slide="2" role="tab" aria-label="Website Maintenance pricing" tabindex="0"></div>
                 </div>
             </div>
             <div class="pricing-note">
