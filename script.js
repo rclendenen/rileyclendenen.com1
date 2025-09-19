@@ -9,10 +9,18 @@ const contactSuccess = document.getElementById('contact-success');
 
 // Mobile Navigation Toggle
 if (mobileMenuToggle) {
-    mobileMenuToggle.addEventListener('click', () => {
+    const toggleMenu = () => {
         mobileMenuToggle.classList.toggle('active');
         navLinks.classList.toggle('active');
         document.body.classList.toggle('menu-open');
+    };
+    
+    mobileMenuToggle.addEventListener('click', toggleMenu);
+    mobileMenuToggle.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            toggleMenu();
+        }
     });
 }
 

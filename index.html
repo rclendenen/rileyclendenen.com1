@@ -5,14 +5,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Riley Clendenen - Web Designer & Remote Assistant</title>
     <meta name="description" content="Freelance web design and remote assistant services for authors, realtors, and small businesses. Fast, organized, honest, and ready to try solutions before saying no.">
+    <meta name="keywords" content="web design, remote assistant, freelance, responsive websites, SEO, small business">
+    <meta name="author" content="Riley Clendenen">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://rileyclendenen.com/">
+    <meta property="og:title" content="Riley Clendenen - Web Designer & Remote Assistant">
+    <meta property="og:description" content="Freelance web design and remote assistant services for authors, realtors, and small businesses. Fast, organized, honest, and ready to try solutions before saying no.">
+    <meta property="og:image" content="https://rileyclendenen.com/headshot%20attempt%201.jpg">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://rileyclendenen.com/">
+    <meta property="twitter:title" content="Riley Clendenen - Web Designer & Remote Assistant">
+    <meta property="twitter:description" content="Freelance web design and remote assistant services for authors, realtors, and small businesses. Fast, organized, honest, and ready to try solutions before saying no.">
+    <meta property="twitter:image" content="https://rileyclendenen.com/headshot%20attempt%201.jpg">
+    
     <link rel="icon" type="image/png" href="bluebonnet background.png">
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Gotham:wght@400;500;600;700&family=Source+Serif+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Gotham:wght@400;500;600;700&family=Source+Serif+Pro:wght@300;400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Gotham:wght@400;500;600;700&family=Source+Serif+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet"></noscript>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
+    <!-- Skip to main content link for accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    
     <!-- Header / Navigation -->
     <header class="header">
         <nav class="navbar">
@@ -31,7 +52,7 @@
                 <div class="nav-badge">
                     <a href="website-project-form.html" class="nav-cta-btn">Let's Build Your Site</a>
                 </div>
-                <div class="mobile-menu-toggle">
+                <div class="mobile-menu-toggle" aria-label="Toggle mobile menu" role="button" tabindex="0">
                     <span></span>
                     <span></span>
                     <span></span>
@@ -41,6 +62,7 @@
     </header>
 
     <!-- Hero Section -->
+    <main id="main-content">
     <section id="home" class="hero">
         <div class="hero-background">
             <div class="hero-accent"></div>
@@ -82,13 +104,13 @@
                 </div>
                 <div class="about-photos">
                     <div class="photo-slot">
-                        <img src="headshot attempt 1.jpg" alt="Riley Clendenen - Professional headshot">
+                        <img src="headshot attempt 1.jpg" alt="Riley Clendenen - Professional headshot" loading="lazy">
                     </div>
                     <div class="photo-slot">
-                        <img src="family photo march 25 3.jpg" alt="Riley's family - March 2025">
+                        <img src="family photo march 25 3.jpg" alt="Riley's family - March 2025" loading="lazy">
                     </div>
                     <div class="photo-slot">
-                        <img src="family photo march 25.jpg" alt="Riley's family - March 2025">
+                        <img src="family photo march 25.jpg" alt="Riley's family - March 2025" loading="lazy">
                     </div>
                 </div>
             </div>
@@ -156,7 +178,7 @@
             <div class="portfolio-grid">
                 <div class="portfolio-item">
                     <div class="portfolio-image">
-                        <img src="elizabethkgreen.com 2.png" alt="Author Landing Page">
+                        <img src="elizabethkgreen.com 2.png" alt="Author Landing Page" loading="lazy">
                         <div class="portfolio-overlay">
                             <div class="portfolio-links">
                                 <a href="https://www.elizabethkgreen.com/" class="portfolio-link">View Live</a>
@@ -175,7 +197,7 @@
                 </div>
                 <div class="portfolio-item">
                     <div class="portfolio-image">
-                        <img src="manesbymiriam.com.png" alt="Stylist Website">
+                        <img src="manesbymiriam.com.png" alt="Stylist Website" loading="lazy">
                         <div class="portfolio-overlay">
                             <div class="portfolio-links">
                                 <a href="https://manesbymiriam.com/" class="portfolio-link">View Live</a>
@@ -473,6 +495,7 @@
             </div>
         </div>
     </footer>
+    </main>
 
     <script src="script.js"></script>
 </body>

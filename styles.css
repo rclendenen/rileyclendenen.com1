@@ -1,5 +1,24 @@
 /* Modern Freelance Portfolio - Sage Green + Tan Palette */
 
+/* Skip Link for Accessibility */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 6px;
+    background: var(--sage);
+    color: var(--white);
+    padding: 8px;
+    text-decoration: none;
+    border-radius: 4px;
+    z-index: 10000;
+    font-weight: 600;
+    transition: top 0.3s;
+}
+
+.skip-link:focus {
+    top: 6px;
+}
+
 /* CSS Variables */
 :root {
     /* Color Palette - New Green-Based Scheme */
@@ -205,6 +224,11 @@ p {
     flex-direction: column;
     cursor: pointer;
     gap: 4px;
+    padding: 8px;
+    min-width: 44px;
+    min-height: 44px;
+    justify-content: center;
+    align-items: center;
 }
 
 .mobile-menu-toggle span {
