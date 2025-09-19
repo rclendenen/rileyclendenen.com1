@@ -109,7 +109,7 @@ if (contactForm) {
                 submitBtn.disabled = false;
                 
                 // Show notification
-                showNotification('Message sent successfully! I\'ll get back to you soon. 🤍', 'success');
+                showNotification('Message sent successfully! I\'ll get back to you soon.', 'success');
                 
                 // Reset form
                 contactForm.reset();
