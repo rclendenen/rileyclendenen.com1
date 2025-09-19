@@ -219,6 +219,10 @@ p {
     box-shadow: var(--shadow-sm);
 }
 
+.nav-cta-mobile {
+    display: none;
+}
+
 .mobile-menu-toggle {
     display: none;
     flex-direction: column;
@@ -1306,17 +1310,27 @@ p {
     }
     
     .nav-badge {
-        display: block;
-        margin-left: auto;
+        display: none;
     }
     
-    .nav-cta-btn {
-        padding: 0.8rem 1rem;
-        font-size: 0.85rem;
-        min-height: 44px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+    .nav-cta-mobile {
+        display: block;
+        background: var(--sage);
+        color: var(--white) !important;
+        padding: 1rem 1.5rem;
+        border-radius: var(--border-radius);
+        font-weight: 600;
+        text-align: center;
+        margin-top: 1rem;
+        border: 2px solid var(--sage);
+        transition: var(--transition);
+    }
+    
+    .nav-cta-mobile:hover {
+        background: var(--reseda-green);
+        border-color: var(--reseda-green);
+        color: var(--white) !important;
+        transform: translateY(-2px);
     }
     
     .hero {
