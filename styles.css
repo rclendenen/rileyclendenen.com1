@@ -529,7 +529,7 @@ p {
 .photo-slot {
     position: relative;
     border-radius: var(--border-radius-lg);
-    overflow: visible;
+    overflow: hidden;
     box-shadow: var(--shadow-md);
     transition: var(--transition);
 }
@@ -570,9 +570,7 @@ p {
 /* Special hover effect for smaller photos to show full image */
 .photo-slot:not(:first-child):hover img {
     object-fit: contain;
-    transform: scale(1.2);
-    z-index: 10;
-    position: relative;
+    transform: scale(1.05);
 }
 
 .photo-label {
