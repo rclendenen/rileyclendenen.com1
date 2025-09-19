@@ -25,6 +25,10 @@ const initCarousels = () => {
         let currentSlide = 0;
         const totalSlides = dots.length;
         
+        // Get arrow buttons
+        const leftArrow = container.querySelector('.carousel-arrow-left');
+        const rightArrow = container.querySelector('.carousel-arrow-right');
+        
         const updateCarousel = (slideIndex) => {
             const translateX = -slideIndex * 100;
             grid.style.transform = `translateX(${translateX}%)`;
@@ -32,7 +36,30 @@ const initCarousels = () => {
             dots.forEach((dot, index) => {
                 dot.classList.toggle('active', index === slideIndex);
             });
+            
+            // Update arrow visibility
+            if (leftArrow) leftArrow.style.display = slideIndex === 0 ? 'none' : 'flex';
+            if (rightArrow) rightArrow.style.display = slideIndex === totalSlides - 1 ? 'none' : 'flex';
         };
+        
+        // Arrow navigation
+        if (leftArrow) {
+            leftArrow.addEventListener('click', () => {
+                if (currentSlide > 0) {
+                    currentSlide--;
+                    updateCarousel(currentSlide);
+                }
+            });
+        }
+        
+        if (rightArrow) {
+            rightArrow.addEventListener('click', () => {
+                if (currentSlide < totalSlides - 1) {
+                    currentSlide++;
+                    updateCarousel(currentSlide);
+                }
+            });
+        }
         
         dots.forEach((dot, index) => {
             dot.addEventListener('click', () => {
@@ -52,16 +79,26 @@ const initCarousels = () => {
         
         // Touch/swipe support
         let startX = 0;
+        let startY = 0;
         let isDragging = false;
         
         container.addEventListener('touchstart', (e) => {
             startX = e.touches[0].clientX;
+            startY = e.touches[0].clientY;
             isDragging = true;
         });
         
         container.addEventListener('touchmove', (e) => {
             if (!isDragging) return;
-            e.preventDefault();
+            // Allow vertical scrolling while preventing horizontal scrolling
+            const touch = e.touches[0];
+            const diffX = Math.abs(touch.clientX - startX);
+            const diffY = Math.abs(touch.clientY - startY);
+            
+            // Only prevent default if horizontal movement is greater than vertical
+            if (diffX > diffY) {
+                e.preventDefault();
+            }
         });
         
         container.addEventListener('touchend', (e) => {
