@@ -1344,7 +1344,7 @@ p {
     .hero {
         background-attachment: scroll;
         min-height: 50vh;
-        padding: 5rem 0 1.5rem 0;
+        padding: 7rem 0 1.5rem 0;
     }
     
     .hero-title {
@@ -1398,10 +1398,7 @@ p {
     }
     
     .carousel-nav {
-        display: flex;
-        justify-content: center;
-        gap: 0.5rem;
-        margin-top: 1rem;
+        display: none;
     }
     
     .carousel-dot {
@@ -1517,7 +1514,7 @@ p {
     .hero {
         background-attachment: scroll;
         min-height: 45vh;
-        padding: 4rem 0 1rem 0;
+        padding: 6rem 0 1rem 0;
     }
     
     .hero-title {
@@ -1583,9 +1580,14 @@ p {
         display: none;
     }
     
+    .carousel-arrows {
+        display: none;
+    }
+    
     .services-container,
     .pricing-container {
         overflow: visible;
+        padding: 0;
     }
     
     .services-grid,
