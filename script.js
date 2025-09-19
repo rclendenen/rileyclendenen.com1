@@ -90,35 +90,38 @@ if (contactForm) {
         submitBtn.textContent = 'Sending...';
         submitBtn.disabled = true;
         
-        // Send form data to server
-        fetch('/api/contact', {
+        // Send form data to Formspree
+        fetch('https://formspree.io/f/xeolyeea', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify(data)
         })
-        .then(response => response.json())
-        .then(result => {
-            // Show success message
-            contactForm.style.display = 'none';
-            contactSuccess.style.display = 'block';
-            
-            // Reset button
-            submitBtn.textContent = originalText;
-            submitBtn.disabled = false;
-            
-            // Show notification
-            showNotification('Message sent successfully! I\'ll get back to you soon.', 'success');
-            
-            // Reset form
-            contactForm.reset();
-            
-            // Show form again after 5 seconds
-            setTimeout(() => {
-                contactForm.style.display = 'block';
-                contactSuccess.style.display = 'none';
-            }, 5000);
+        .then(response => {
+            if (response.ok) {
+                // Show success message
+                contactForm.style.display = 'none';
+                contactSuccess.style.display = 'block';
+                
+                // Reset button
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+                
+                // Show notification
+                showNotification('Message sent successfully! I\'ll get back to you soon.', 'success');
+                
+                // Reset form
+                contactForm.reset();
+                
+                // Show form again after 5 seconds
+                setTimeout(() => {
+                    contactForm.style.display = 'block';
+                    contactSuccess.style.display = 'none';
+                }, 5000);
+            } else {
+                throw new Error('Form submission failed');
+            }
         })
         .catch(error => {
             console.error('Error:', error);
