@@ -109,7 +109,7 @@ if (contactForm) {
                 submitBtn.disabled = false;
                 
                 // Show notification
-                showNotification('Message sent successfully! I\'ll get back to you soon.', 'success');
+                showNotification('Message sent successfully! I will get back to you soon.', 'success');
                 
                 // Reset form
                 contactForm.reset();
@@ -148,7 +148,7 @@ function showNotification(message, type = 'info') {
     notification.innerHTML = `
         <div class="notification-content">
             <span class="notification-message">${message}</span>
-            <button class="notification-close">&times;</button>
+            <button class="notification-close">×</button>
         </div>
     `;
     
