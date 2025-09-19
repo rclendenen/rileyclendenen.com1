@@ -1306,7 +1306,17 @@ p {
     }
     
     .nav-badge {
-        display: none;
+        display: block;
+        margin-left: auto;
+    }
+    
+    .nav-cta-btn {
+        padding: 0.8rem 1rem;
+        font-size: 0.85rem;
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
     
     .hero {
