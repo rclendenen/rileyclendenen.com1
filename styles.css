@@ -1492,24 +1492,28 @@ p {
         display: flex;
         flex-direction: column;
         align-items: center;
+        text-align: center;
     }
     
     .pricing-card {
         flex: 0 0 100%;
         padding: 1.2rem;
         margin: 0;
+        width: 100%;
+        text-align: center;
     }
     
     .pricing-badge {
         position: relative;
         top: 0;
-        left: 50%;
-        transform: translateX(-50%);
+        left: 0;
+        transform: none;
         margin-bottom: 1rem;
         padding: 0.5rem 1rem;
         font-size: 0.8rem;
         border-radius: 18px;
         display: inline-block;
+        text-align: center;
     }
     
     .pricing-card.featured {
@@ -1559,6 +1563,7 @@ p {
     .contact-form,
     .pricing-card {
         padding: 1.2rem;
+        text-align: center;
     }
     
     .pricing-card.featured {
@@ -1583,13 +1588,14 @@ p {
     .pricing-badge {
         position: relative;
         top: 0;
-        left: 50%;
-        transform: translateX(-50%);
+        left: 0;
+        transform: none;
         margin-bottom: 1rem;
         padding: 0.5rem 1rem;
         font-size: 0.8rem;
         border-radius: 18px;
         display: inline-block;
+        text-align: center;
     }
     
     .pricing-card.featured {
