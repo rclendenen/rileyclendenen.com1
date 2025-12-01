@@ -46,10 +46,12 @@
         createChristmasLights();
     }
 
-    // Santa Animation
+    // Santa Animation - Now in Hero Section
     function createSantaAnimation() {
-        if (!document.body) {
-            console.error('Document body not found');
+        // Find the hero section
+        const heroSection = document.querySelector('#home.hero');
+        if (!heroSection) {
+            console.error('Hero section not found');
             return;
         }
         
@@ -59,7 +61,7 @@
         const santa = document.createElement('div');
         santa.className = 'christmas-santa';
         
-        // Banner - White sparkly "Merry Christmas" (no emojis)
+        // Banner - Wavy white ribbon "Merry Christmas" (no emojis)
         const banner = document.createElement('div');
         banner.className = 'christmas-banner';
         const bannerText = document.createElement('span');
@@ -68,9 +70,9 @@
         
         santa.appendChild(banner);
         santaContainer.appendChild(santa);
-        document.body.appendChild(santaContainer);
+        heroSection.appendChild(santaContainer);
         
-        console.log('Santa animation created', santaContainer);
+        console.log('Santa animation created in hero section', santaContainer);
         
         // Set up jingle bell sound to play when Santa appears
         // Wait for user interaction first
