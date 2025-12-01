@@ -273,8 +273,17 @@
     function createChristmasLights() {
         if (!document.body) return;
         
+        // Get header height to position lights at bottom
+        const header = document.querySelector('.header');
+        let headerHeight = 80; // Default fallback
+        if (header) {
+            headerHeight = header.offsetHeight;
+        }
+        
         const lightsContainer = document.createElement('div');
         lightsContainer.className = 'christmas-lights';
+        lightsContainer.style.top = headerHeight + 'px';
+        lightsContainer.style.height = 'auto';
         
         const lightString = document.createElement('div');
         lightString.className = 'christmas-light-string';
@@ -289,7 +298,7 @@
         
         lightsContainer.appendChild(lightString);
         document.body.appendChild(lightsContainer);
-        console.log('Christmas lights created');
+        console.log('Christmas lights created at header bottom, height:', headerHeight);
     }
 
     // Cleanup function (for manual removal if needed)
