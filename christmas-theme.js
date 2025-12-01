@@ -277,8 +277,8 @@
         const lightString = document.createElement('div');
         lightString.className = 'christmas-light-string';
         
-        // Create 20 lights evenly spaced
-        const numLights = 20;
+        // Create 35 lights evenly spaced for more whimsical look
+        const numLights = 35;
         for (let i = 0; i < numLights; i++) {
             const light = document.createElement('div');
             light.className = 'christmas-light';
