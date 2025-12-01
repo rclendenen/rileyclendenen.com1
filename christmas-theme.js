@@ -43,6 +43,7 @@
         createSnowfall();
         createRibbons();
         createSnowBorder();
+        createChristmasLights();
     }
 
     // Santa Animation
@@ -90,7 +91,7 @@
             if (userInteracted) {
                 playJingleBell();
             }
-        }, 2000); // Match animation delay
+        }, 1000); // Match animation delay (1s)
     }
     
     // Jingle Bell Sound
@@ -264,6 +265,29 @@
         snowBorder.className = 'christmas-snow-border';
         document.body.appendChild(snowBorder);
         console.log('Snow border created', snowBorder);
+    }
+    
+    // Christmas Lights Under Header
+    function createChristmasLights() {
+        if (!document.body) return;
+        
+        const lightsContainer = document.createElement('div');
+        lightsContainer.className = 'christmas-lights';
+        
+        const lightString = document.createElement('div');
+        lightString.className = 'christmas-light-string';
+        
+        // Create 20 lights evenly spaced
+        const numLights = 20;
+        for (let i = 0; i < numLights; i++) {
+            const light = document.createElement('div');
+            light.className = 'christmas-light';
+            lightString.appendChild(light);
+        }
+        
+        lightsContainer.appendChild(lightString);
+        document.body.appendChild(lightsContainer);
+        console.log('Christmas lights created');
     }
 
     // Cleanup function (for manual removal if needed)
