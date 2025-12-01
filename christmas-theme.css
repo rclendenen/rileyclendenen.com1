@@ -392,82 +392,96 @@
 
 .christmas-light {
     width: 14px;
-    height: 14px;
-    border-radius: 50%;
+    height: 18px;
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
     background: #ffffff;
     border: 2px solid rgba(0, 0, 0, 0.15);
     box-shadow: 
-        0 0 8px rgba(255, 255, 255, 1),
-        0 0 16px rgba(255, 255, 255, 0.8),
-        0 0 24px rgba(255, 255, 255, 0.5),
-        0 2px 4px rgba(0, 0, 0, 0.2),
-        inset 0 0 8px rgba(255, 255, 255, 1);
-    animation: lightTwinkle 1.5s ease-in-out infinite;
+        0 0 10px rgba(255, 255, 255, 1),
+        0 0 20px rgba(255, 255, 255, 0.9),
+        0 0 30px rgba(255, 255, 255, 0.7),
+        0 0 40px rgba(255, 255, 255, 0.4),
+        0 2px 6px rgba(0, 0, 0, 0.2),
+        inset 0 -2px 10px rgba(255, 255, 255, 0.8),
+        inset 0 2px 4px rgba(255, 255, 255, 1);
+    animation: lightTwinkle 1.5s ease-in-out infinite, lightSparkle 2s ease-in-out infinite;
     position: relative;
     transform-origin: center;
+}
+
+/* Bulb base/socket */
+.christmas-light::before {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 8px;
+    height: 4px;
+    background: linear-gradient(to bottom, 
+        rgba(100, 100, 100, 0.6) 0%,
+        rgba(50, 50, 50, 0.8) 100%
+    );
+    border-radius: 2px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* Sparkle particles */
+.christmas-light::after {
+    content: '';
+    position: absolute;
+    top: -6px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4px;
+    height: 4px;
+    background: radial-gradient(circle, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 70%);
+    border-radius: 50%;
+    opacity: 0;
+    animation: sparkleParticle 2s ease-in-out infinite;
+    pointer-events: none;
+    box-shadow: 
+        0 0 4px rgba(255, 255, 255, 1),
+        0 0 8px rgba(255, 255, 255, 0.8),
+        2px -2px 2px rgba(255, 255, 255, 0.6),
+        -2px 2px 2px rgba(255, 255, 255, 0.6);
 }
 
 /* Vary light sizes for whimsical effect */
 .christmas-light:nth-child(3n) {
     width: 16px;
-    height: 16px;
+    height: 20px;
 }
 
 .christmas-light:nth-child(5n) {
-    width: 10px;
-    height: 10px;
+    width: 12px;
+    height: 15px;
 }
 
 .christmas-light:nth-child(7n) {
     width: 18px;
-    height: 18px;
+    height: 22px;
 }
 
-/* Add slight swing animation to some lights */
+/* Stagger sparkle animations */
 .christmas-light:nth-child(odd) {
-    animation: lightTwinkle 1.5s ease-in-out infinite, lightSwing 3s ease-in-out infinite;
+    animation: lightTwinkle 1.5s ease-in-out infinite, lightSparkle 2s ease-in-out infinite;
     animation-delay: 0s, 0s;
 }
 
 .christmas-light:nth-child(even) {
-    animation: lightTwinkle 1.5s ease-in-out infinite, lightSwing 3s ease-in-out infinite;
-    animation-delay: 0.75s, 1.5s;
+    animation: lightTwinkle 1.5s ease-in-out infinite, lightSparkle 2s ease-in-out infinite;
+    animation-delay: 0.75s, 1s;
 }
 
-.christmas-light::after {
-    content: '';
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 2px;
-    height: 30px;
-    background: linear-gradient(to bottom, 
-        rgba(255, 255, 255, 0.9) 0%,
-        rgba(255, 255, 255, 0.6) 30%,
-        rgba(255, 255, 255, 0.3) 60%,
-        transparent 100%
-    );
-    box-shadow: 0 0 4px rgba(255, 255, 255, 0.5);
+.christmas-light:nth-child(3n)::after {
+    animation-delay: 0.5s;
 }
 
-/* Add decorative wire between lights */
-.christmas-light-string::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background: linear-gradient(to right,
-        transparent 0%,
-        rgba(255, 255, 255, 0.3) 10%,
-        rgba(255, 255, 255, 0.5) 50%,
-        rgba(255, 255, 255, 0.3) 90%,
-        transparent 100%
-    );
-    box-shadow: 0 0 2px rgba(255, 255, 255, 0.4);
+.christmas-light:nth-child(5n)::after {
+    animation-delay: 1s;
 }
+
 
 @keyframes lightTwinkle {
     0%, 100% {
@@ -475,20 +489,78 @@
         transform: scale(1);
     }
     50% {
-        opacity: 0.7;
-        transform: scale(0.95);
+        opacity: 0.8;
+        transform: scale(0.98);
     }
 }
 
-@keyframes lightSwing {
+@keyframes lightSparkle {
     0%, 100% {
-        transform: translateX(0) rotate(0deg);
+        box-shadow: 
+            0 0 10px rgba(255, 255, 255, 1),
+            0 0 20px rgba(255, 255, 255, 0.9),
+            0 0 30px rgba(255, 255, 255, 0.7),
+            0 0 40px rgba(255, 255, 255, 0.4),
+            0 2px 6px rgba(0, 0, 0, 0.2),
+            inset 0 -2px 10px rgba(255, 255, 255, 0.8),
+            inset 0 2px 4px rgba(255, 255, 255, 1);
     }
     25% {
-        transform: translateX(-2px) rotate(-1deg);
+        box-shadow: 
+            0 0 15px rgba(255, 255, 255, 1),
+            0 0 30px rgba(255, 255, 255, 1),
+            0 0 45px rgba(255, 255, 255, 0.9),
+            0 0 60px rgba(255, 255, 255, 0.6),
+            0 2px 8px rgba(0, 0, 0, 0.2),
+            inset 0 -2px 12px rgba(255, 255, 255, 1),
+            inset 0 2px 6px rgba(255, 255, 255, 1);
+    }
+    50% {
+        box-shadow: 
+            0 0 12px rgba(255, 255, 255, 1),
+            0 0 25px rgba(255, 255, 255, 0.95),
+            0 0 38px rgba(255, 255, 255, 0.8),
+            0 0 50px rgba(255, 255, 255, 0.5),
+            0 2px 7px rgba(0, 0, 0, 0.2),
+            inset 0 -2px 11px rgba(255, 255, 255, 0.9),
+            inset 0 2px 5px rgba(255, 255, 255, 1);
     }
     75% {
-        transform: translateX(2px) rotate(1deg);
+        box-shadow: 
+            0 0 18px rgba(255, 255, 255, 1),
+            0 0 35px rgba(255, 255, 255, 1),
+            0 0 50px rgba(255, 255, 255, 0.95),
+            0 0 70px rgba(255, 255, 255, 0.7),
+            0 2px 9px rgba(0, 0, 0, 0.2),
+            inset 0 -2px 14px rgba(255, 255, 255, 1),
+            inset 0 2px 7px rgba(255, 255, 255, 1);
+    }
+}
+
+@keyframes sparkleParticle {
+    0%, 100% {
+        opacity: 0;
+        transform: translateX(-50%) translateY(0) scale(0);
+    }
+    20% {
+        opacity: 1;
+        transform: translateX(-50%) translateY(-5px) scale(1);
+    }
+    40% {
+        opacity: 0.8;
+        transform: translateX(-50%) translateY(-10px) scale(1.2);
+    }
+    60% {
+        opacity: 0.5;
+        transform: translateX(-50%) translateY(-15px) scale(1);
+    }
+    80% {
+        opacity: 0.2;
+        transform: translateX(-50%) translateY(-20px) scale(0.8);
+    }
+    100% {
+        opacity: 0;
+        transform: translateX(-50%) translateY(-25px) scale(0);
     }
 }
 
