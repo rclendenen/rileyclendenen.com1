@@ -1,0 +1,266 @@
+/* Christmas Theme Styles - Temporary Holiday Decoration */
+
+/* Santa Animation Container */
+.christmas-santa-container {
+    position: fixed;
+    top: 20px;
+    left: -400px;
+    z-index: 9998;
+    pointer-events: none;
+    animation: santaSlide 20s infinite;
+    animation-delay: 2s;
+}
+
+.christmas-santa-container.active {
+    display: block;
+}
+
+/* Santa Sleigh Animation */
+.christmas-santa {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: linear-gradient(135deg, #d32f2f 0%, #b71c1c 100%);
+    padding: 12px 20px;
+    border-radius: 50px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    transform: scale(0.8);
+}
+
+.christmas-santa-icon {
+    font-size: 32px;
+    animation: santaBounce 0.5s ease-in-out infinite;
+}
+
+.christmas-reindeer {
+    font-size: 24px;
+    animation: reindeerBounce 0.6s ease-in-out infinite;
+    animation-delay: 0.1s;
+}
+
+@keyframes reindeerBounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-3px);
+    }
+}
+
+.christmas-banner {
+    background: linear-gradient(135deg, #fff 0%, #f0f0f0 100%);
+    color: #d32f2f;
+    padding: 8px 16px;
+    border-radius: 30px;
+    font-weight: 700;
+    font-size: 16px;
+    white-space: nowrap;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    font-family: var(--font-heading, 'Gotham', sans-serif);
+}
+
+/* Santa Animation Keyframes */
+@keyframes santaSlide {
+    0% {
+        left: -400px;
+        opacity: 0;
+    }
+    5% {
+        opacity: 1;
+    }
+    45% {
+        left: calc(50% - 200px);
+    }
+    50% {
+        left: calc(50% - 200px);
+    }
+    55% {
+        left: calc(50% - 200px);
+    }
+    95% {
+        opacity: 1;
+    }
+    100% {
+        left: calc(100% + 400px);
+        opacity: 0;
+    }
+}
+
+@keyframes santaBounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-5px);
+    }
+}
+
+/* Snowfall Container */
+.christmas-snow-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9997;
+    overflow: hidden;
+}
+
+.christmas-snowflake {
+    position: absolute;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 1em;
+    font-family: Arial, sans-serif;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
+    animation: snowfall linear infinite;
+    user-select: none;
+}
+
+/* Snowfall Animation */
+@keyframes snowfall {
+    0% {
+        transform: translateY(-100vh) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* Christmas Ribbon Decorations */
+.christmas-ribbon {
+    position: fixed;
+    z-index: 9996;
+    pointer-events: none;
+    opacity: 0.85;
+}
+
+.christmas-ribbon-top-left {
+    top: 0;
+    left: 0;
+    width: 120px;
+    height: 120px;
+    transform: rotate(-45deg);
+    transform-origin: top left;
+}
+
+.christmas-ribbon-top-right {
+    top: 0;
+    right: 0;
+    width: 120px;
+    height: 120px;
+    transform: rotate(45deg);
+    transform-origin: top right;
+}
+
+.christmas-ribbon-bottom-left {
+    bottom: 0;
+    left: 0;
+    width: 120px;
+    height: 120px;
+    transform: rotate(45deg);
+    transform-origin: bottom left;
+}
+
+.christmas-ribbon-bottom-right {
+    bottom: 0;
+    right: 0;
+    width: 120px;
+    height: 120px;
+    transform: rotate(-45deg);
+    transform-origin: bottom right;
+}
+
+/* Ribbon SVG Design */
+.christmas-ribbon svg {
+    width: 100%;
+    height: 100%;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .christmas-santa {
+        transform: scale(0.6);
+        padding: 8px 16px;
+    }
+    
+    .christmas-santa-icon {
+        font-size: 24px;
+    }
+    
+    .christmas-banner {
+        font-size: 12px;
+        padding: 6px 12px;
+    }
+    
+    .christmas-ribbon {
+        width: 80px;
+        height: 80px;
+    }
+    
+    @keyframes santaSlide {
+        0% {
+            left: -300px;
+            opacity: 0;
+        }
+        5% {
+            opacity: 1;
+        }
+        45% {
+            left: calc(50% - 150px);
+        }
+        50% {
+            left: calc(50% - 150px);
+        }
+        55% {
+            left: calc(50% - 150px);
+        }
+        95% {
+            opacity: 1;
+        }
+        100% {
+            left: calc(100% + 300px);
+            opacity: 0;
+        }
+    }
+}
+
+@media (max-width: 480px) {
+    .christmas-santa {
+        transform: scale(0.5);
+    }
+    
+    .christmas-banner {
+        font-size: 10px;
+        padding: 4px 8px;
+    }
+    
+    .christmas-ribbon {
+        width: 60px;
+        height: 60px;
+    }
+}
+
+/* Performance Optimizations */
+.christmas-santa-container,
+.christmas-snow-container,
+.christmas-ribbon {
+    will-change: transform;
+    backface-visibility: hidden;
+}
+
+/* Hide Christmas theme when disabled */
+body.no-christmas .christmas-santa-container,
+body.no-christmas .christmas-snow-container,
+body.no-christmas .christmas-ribbon {
+    display: none !important;
+}
+
