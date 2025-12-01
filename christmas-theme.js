@@ -42,6 +42,7 @@
         createSantaAnimation();
         createSnowfall();
         createRibbons();
+        createSnowBorder();
     }
 
     // Santa Animation
@@ -68,9 +69,25 @@
         santaContainer.appendChild(santa);
         document.body.appendChild(santaContainer);
         
+        // Set up jingle bell sound to play when Santa appears
+        // Wait for user interaction first
+        let userInteracted = false;
+        const enableSound = () => {
+            userInteracted = true;
+            document.removeEventListener('click', enableSound);
+            document.removeEventListener('scroll', enableSound);
+            document.removeEventListener('touchstart', enableSound);
+        };
+        
+        document.addEventListener('click', enableSound);
+        document.addEventListener('scroll', enableSound);
+        document.addEventListener('touchstart', enableSound);
+        
         // Play jingle bell sound when Santa appears (after animation delay)
         setTimeout(() => {
-            playJingleBell();
+            if (userInteracted) {
+                playJingleBell();
+            }
         }, 2000); // Match animation delay
         
         console.log('Santa animation created');
@@ -95,7 +112,7 @@
                 
                 // Bell-like envelope
                 gainNode.gain.setValueAtTime(0, now);
-                gainNode.gain.linearRampToValueAtTime(0.15, now + 0.02);
+                gainNode.gain.linearRampToValueAtTime(0.2, now + 0.02);
                 gainNode.gain.exponentialRampToValueAtTime(0.01, now + 0.6);
                 
                 oscillator.connect(gainNode);
@@ -118,7 +135,7 @@
                     oscillator.frequency.setValueAtTime(freq, now2);
                     
                     gainNode.gain.setValueAtTime(0, now2);
-                    gainNode.gain.linearRampToValueAtTime(0.12, now2 + 0.02);
+                    gainNode.gain.linearRampToValueAtTime(0.15, now2 + 0.02);
                     gainNode.gain.exponentialRampToValueAtTime(0.01, now2 + 0.5);
                     
                     oscillator.connect(gainNode);
@@ -129,7 +146,6 @@
                 });
             }, 150);
         } catch (error) {
-            // Silently fail if audio context is not available (user interaction required)
             console.log('Jingle bell sound:', error.message || 'Audio context unavailable');
         }
     }
@@ -188,7 +204,7 @@
         }, 500);
     }
 
-    // Christmas Ribbon Decorations - White with Snowflakes
+    // Christmas Ribbon Decorations - Diagonal Ribbons Across Corners
     function createRibbons() {
         if (!document.body) return;
         
@@ -203,62 +219,51 @@
             const ribbon = document.createElement('div');
             ribbon.className = `christmas-ribbon ${corner.class}`;
             
-            // Create SVG ribbon design - White with snowflakes
+            // Create SVG ribbon design - Diagonal white ribbon with snowflakes
             const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-            svg.setAttribute('viewBox', '0 0 100 100');
+            svg.setAttribute('viewBox', '0 0 200 60');
             svg.setAttribute('preserveAspectRatio', 'none');
             
-            // White ribbon base
-            const path1 = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-            path1.setAttribute('d', 'M0,0 L100,0 L100,20 L0,20 Z');
-            path1.setAttribute('fill', '#FFFFFF');
-            path1.setAttribute('opacity', '0.95');
+            // White ribbon base - diagonal stripe pattern
+            for (let i = 0; i < 10; i++) {
+                const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+                const y = i * 6;
+                path.setAttribute('d', `M0,${y} L200,${y} L200,${y + 3} L0,${y + 3} Z`);
+                path.setAttribute('fill', '#FFFFFF');
+                path.setAttribute('opacity', i % 2 === 0 ? '0.9' : '0.7');
+                svg.appendChild(path);
+            }
             
-            const path2 = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-            path2.setAttribute('d', 'M0,20 L100,20 L90,40 L10,40 Z');
-            path2.setAttribute('fill', '#FFFFFF');
-            path2.setAttribute('opacity', '0.9');
-            
-            const path3 = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-            path3.setAttribute('d', 'M0,40 L100,40 L100,60 L0,60 Z');
-            path3.setAttribute('fill', '#FFFFFF');
-            path3.setAttribute('opacity', '0.95');
-            
-            const path4 = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-            path4.setAttribute('d', 'M0,60 L100,60 L90,80 L10,80 Z');
-            path4.setAttribute('fill', '#FFFFFF');
-            path4.setAttribute('opacity', '0.9');
-            
-            const path5 = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-            path5.setAttribute('d', 'M0,80 L100,80 L100,100 L0,100 Z');
-            path5.setAttribute('fill', '#FFFFFF');
-            path5.setAttribute('opacity', '0.95');
-            
-            // Add snowflakes on the ribbon
+            // Add snowflakes along the ribbon
             const snowflakes = ['❄', '❅', '❆'];
-            for (let i = 0; i < 6; i++) {
+            for (let i = 0; i < 8; i++) {
                 const text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
-                const x = 15 + (i % 3) * 30;
-                const y = 20 + Math.floor(i / 3) * 30;
+                const x = 20 + i * 25;
+                const y = 35;
                 text.setAttribute('x', x);
                 text.setAttribute('y', y);
-                text.setAttribute('font-size', '12');
+                text.setAttribute('font-size', '14');
                 text.setAttribute('fill', '#E8F4F8');
-                text.setAttribute('opacity', '0.8');
+                text.setAttribute('opacity', '0.9');
+                text.setAttribute('text-anchor', 'middle');
                 text.textContent = snowflakes[i % snowflakes.length];
                 svg.appendChild(text);
             }
-            
-            svg.appendChild(path1);
-            svg.appendChild(path2);
-            svg.appendChild(path3);
-            svg.appendChild(path4);
-            svg.appendChild(path5);
             
             ribbon.appendChild(svg);
             document.body.appendChild(ribbon);
         });
         console.log('Ribbons created');
+    }
+    
+    // Snow Accumulation Border
+    function createSnowBorder() {
+        if (!document.body) return;
+        
+        const snowBorder = document.createElement('div');
+        snowBorder.className = 'christmas-snow-border';
+        document.body.appendChild(snowBorder);
+        console.log('Snow border created');
     }
 
     // Cleanup function (for manual removal if needed)
