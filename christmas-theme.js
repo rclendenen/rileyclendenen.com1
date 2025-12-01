@@ -57,28 +57,81 @@
         const santa = document.createElement('div');
         santa.className = 'christmas-santa';
         
-        // Reindeer
-        const reindeer = document.createElement('span');
-        reindeer.className = 'christmas-reindeer';
-        reindeer.innerHTML = '🦌';
-        reindeer.style.marginRight = '5px';
-        
-        // Santa Icon
-        const santaIcon = document.createElement('span');
-        santaIcon.className = 'christmas-santa-icon';
-        santaIcon.innerHTML = '🎅';
-        
-        // Banner
+        // Banner - White sparkly "Merry Christmas" (no emojis)
         const banner = document.createElement('div');
         banner.className = 'christmas-banner';
-        banner.textContent = 'Merry Christmas';
+        const bannerText = document.createElement('span');
+        bannerText.textContent = 'Merry Christmas';
+        banner.appendChild(bannerText);
         
-        santa.appendChild(reindeer);
-        santa.appendChild(santaIcon);
         santa.appendChild(banner);
         santaContainer.appendChild(santa);
         document.body.appendChild(santaContainer);
+        
+        // Play jingle bell sound when Santa appears (after animation delay)
+        setTimeout(() => {
+            playJingleBell();
+        }, 2000); // Match animation delay
+        
         console.log('Santa animation created');
+    }
+    
+    // Jingle Bell Sound
+    function playJingleBell() {
+        try {
+            // Create audio context for jingle bell sound
+            const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+            const now = audioContext.currentTime;
+            
+            // Create multiple oscillators for a richer bell sound
+            const frequencies = [523.25, 659.25, 783.99]; // C5, E5, G5 chord
+            
+            frequencies.forEach((freq, index) => {
+                const oscillator = audioContext.createOscillator();
+                const gainNode = audioContext.createGain();
+                
+                oscillator.type = 'sine';
+                oscillator.frequency.setValueAtTime(freq, now);
+                
+                // Bell-like envelope
+                gainNode.gain.setValueAtTime(0, now);
+                gainNode.gain.linearRampToValueAtTime(0.15, now + 0.02);
+                gainNode.gain.exponentialRampToValueAtTime(0.01, now + 0.6);
+                
+                oscillator.connect(gainNode);
+                gainNode.connect(audioContext.destination);
+                
+                oscillator.start(now);
+                oscillator.stop(now + 0.6);
+            });
+            
+            // Second jingle after a short delay
+            setTimeout(() => {
+                const now2 = audioContext.currentTime;
+                const frequencies2 = [659.25, 783.99, 987.77]; // E5, G5, B5
+                
+                frequencies2.forEach((freq, index) => {
+                    const oscillator = audioContext.createOscillator();
+                    const gainNode = audioContext.createGain();
+                    
+                    oscillator.type = 'sine';
+                    oscillator.frequency.setValueAtTime(freq, now2);
+                    
+                    gainNode.gain.setValueAtTime(0, now2);
+                    gainNode.gain.linearRampToValueAtTime(0.12, now2 + 0.02);
+                    gainNode.gain.exponentialRampToValueAtTime(0.01, now2 + 0.5);
+                    
+                    oscillator.connect(gainNode);
+                    gainNode.connect(audioContext.destination);
+                    
+                    oscillator.start(now2);
+                    oscillator.stop(now2 + 0.5);
+                });
+            }, 150);
+        } catch (error) {
+            // Silently fail if audio context is not available (user interaction required)
+            console.log('Jingle bell sound:', error.message || 'Audio context unavailable');
+        }
     }
 
     // Snowfall Effect
@@ -135,7 +188,7 @@
         }, 500);
     }
 
-    // Christmas Ribbon Decorations
+    // Christmas Ribbon Decorations - White with Snowflakes
     function createRibbons() {
         if (!document.body) return;
         
@@ -150,51 +203,57 @@
             const ribbon = document.createElement('div');
             ribbon.className = `christmas-ribbon ${corner.class}`;
             
-            // Create SVG ribbon design
+            // Create SVG ribbon design - White with snowflakes
             const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
             svg.setAttribute('viewBox', '0 0 100 100');
             svg.setAttribute('preserveAspectRatio', 'none');
             
-            // White and silver ribbon design
+            // White ribbon base
             const path1 = document.createElementNS('http://www.w3.org/2000/svg', 'path');
             path1.setAttribute('d', 'M0,0 L100,0 L100,20 L0,20 Z');
             path1.setAttribute('fill', '#FFFFFF');
-            path1.setAttribute('opacity', '0.9');
+            path1.setAttribute('opacity', '0.95');
             
             const path2 = document.createElementNS('http://www.w3.org/2000/svg', 'path');
             path2.setAttribute('d', 'M0,20 L100,20 L90,40 L10,40 Z');
-            path2.setAttribute('fill', '#C0C0C0');
-            path2.setAttribute('opacity', '0.8');
+            path2.setAttribute('fill', '#FFFFFF');
+            path2.setAttribute('opacity', '0.9');
             
             const path3 = document.createElementNS('http://www.w3.org/2000/svg', 'path');
             path3.setAttribute('d', 'M0,40 L100,40 L100,60 L0,60 Z');
             path3.setAttribute('fill', '#FFFFFF');
-            path3.setAttribute('opacity', '0.9');
+            path3.setAttribute('opacity', '0.95');
             
             const path4 = document.createElementNS('http://www.w3.org/2000/svg', 'path');
             path4.setAttribute('d', 'M0,60 L100,60 L90,80 L10,80 Z');
-            path4.setAttribute('fill', '#C0C0C0');
-            path4.setAttribute('opacity', '0.8');
+            path4.setAttribute('fill', '#FFFFFF');
+            path4.setAttribute('opacity', '0.9');
             
             const path5 = document.createElementNS('http://www.w3.org/2000/svg', 'path');
             path5.setAttribute('d', 'M0,80 L100,80 L100,100 L0,100 Z');
             path5.setAttribute('fill', '#FFFFFF');
-            path5.setAttribute('opacity', '0.9');
+            path5.setAttribute('opacity', '0.95');
             
-            // Add decorative bow
-            const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-            circle.setAttribute('cx', '50');
-            circle.setAttribute('cy', '50');
-            circle.setAttribute('r', '15');
-            circle.setAttribute('fill', '#FFD700');
-            circle.setAttribute('opacity', '0.7');
+            // Add snowflakes on the ribbon
+            const snowflakes = ['❄', '❅', '❆'];
+            for (let i = 0; i < 6; i++) {
+                const text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+                const x = 15 + (i % 3) * 30;
+                const y = 20 + Math.floor(i / 3) * 30;
+                text.setAttribute('x', x);
+                text.setAttribute('y', y);
+                text.setAttribute('font-size', '12');
+                text.setAttribute('fill', '#E8F4F8');
+                text.setAttribute('opacity', '0.8');
+                text.textContent = snowflakes[i % snowflakes.length];
+                svg.appendChild(text);
+            }
             
             svg.appendChild(path1);
             svg.appendChild(path2);
             svg.appendChild(path3);
             svg.appendChild(path4);
             svg.appendChild(path5);
-            svg.appendChild(circle);
             
             ribbon.appendChild(svg);
             document.body.appendChild(ribbon);
