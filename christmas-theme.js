@@ -69,6 +69,8 @@
         santaContainer.appendChild(santa);
         document.body.appendChild(santaContainer);
         
+        console.log('Santa animation created', santaContainer);
+        
         // Set up jingle bell sound to play when Santa appears
         // Wait for user interaction first
         let userInteracted = false;
@@ -89,8 +91,6 @@
                 playJingleBell();
             }
         }, 2000); // Match animation delay
-        
-        console.log('Santa animation created');
     }
     
     // Jingle Bell Sound
@@ -263,7 +263,7 @@
         const snowBorder = document.createElement('div');
         snowBorder.className = 'christmas-snow-border';
         document.body.appendChild(snowBorder);
-        console.log('Snow border created');
+        console.log('Snow border created', snowBorder);
     }
 
     // Cleanup function (for manual removal if needed)
