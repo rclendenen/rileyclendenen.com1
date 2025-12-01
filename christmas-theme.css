@@ -7,12 +7,9 @@
     left: -400px;
     z-index: 9998;
     pointer-events: none;
+    display: block;
     animation: santaSlide 20s infinite;
     animation-delay: 2s;
-}
-
-.christmas-santa-container.active {
-    display: block;
 }
 
 /* Santa Sleigh Animation */

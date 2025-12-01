@@ -3,19 +3,40 @@
 
 (function() {
     'use strict';
+    
+    console.log('Christmas theme script loaded');
 
-    // Check if Christmas theme should be active
-    const END_DATE = new Date('2026-01-01T00:00:00');
-    const today = new Date();
+    // Wait for DOM to be ready
+    function init() {
+        try {
+            // Check if Christmas theme should be active
+            const END_DATE = new Date('2026-01-01T00:00:00');
+            const today = new Date();
 
-    // If past end date, don't initialize Christmas theme
-    if (today >= END_DATE) {
-        document.body.classList.add('no-christmas');
-        return;
+            // If past end date, don't initialize Christmas theme
+            if (today >= END_DATE) {
+                if (document.body) {
+                    document.body.classList.add('no-christmas');
+                }
+                return;
+            }
+
+            // Initialize Christmas theme
+            console.log('Initializing Christmas theme...');
+            initChristmasTheme();
+            console.log('Christmas theme initialized');
+        } catch (error) {
+            console.error('Christmas theme initialization error:', error);
+        }
     }
 
-    // Initialize Christmas theme
-    initChristmasTheme();
+    // Run when DOM is ready
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+    } else {
+        // DOM is already ready
+        init();
+    }
 
     function initChristmasTheme() {
         createSantaAnimation();
@@ -25,8 +46,13 @@
 
     // Santa Animation
     function createSantaAnimation() {
+        if (!document.body) {
+            console.error('Document body not found');
+            return;
+        }
+        
         const santaContainer = document.createElement('div');
-        santaContainer.className = 'christmas-santa-container active';
+        santaContainer.className = 'christmas-santa-container';
         
         const santa = document.createElement('div');
         santa.className = 'christmas-santa';
@@ -52,10 +78,13 @@
         santa.appendChild(banner);
         santaContainer.appendChild(santa);
         document.body.appendChild(santaContainer);
+        console.log('Santa animation created');
     }
 
     // Snowfall Effect
     function createSnowfall() {
+        if (!document.body) return;
+        
         const snowContainer = document.createElement('div');
         snowContainer.className = 'christmas-snow-container';
         document.body.appendChild(snowContainer);
@@ -79,8 +108,8 @@
             const duration = Math.random() * 10 + 10; // 10-20 seconds
             snowflake.style.animationDuration = duration + 's';
             
-            // Random delay
-            snowflake.style.animationDelay = Math.random() * 5 + 's';
+            // Random delay (reduced for faster appearance)
+            snowflake.style.animationDelay = Math.random() * 2 + 's';
             
             snowContainer.appendChild(snowflake);
             
@@ -92,10 +121,11 @@
             }, (duration + 5) * 1000);
         }
 
-        // Create initial snowflakes
+        // Create initial snowflakes immediately
         for (let i = 0; i < numSnowflakes; i++) {
-            setTimeout(() => createSnowflake(), i * 200);
+            setTimeout(() => createSnowflake(), i * 100);
         }
+        console.log('Snowfall effect created');
 
         // Continuously create new snowflakes
         setInterval(() => {
@@ -107,6 +137,8 @@
 
     // Christmas Ribbon Decorations
     function createRibbons() {
+        if (!document.body) return;
+        
         const corners = [
             { class: 'christmas-ribbon-top-left', position: 'top-left' },
             { class: 'christmas-ribbon-top-right', position: 'top-right' },
@@ -167,6 +199,7 @@
             ribbon.appendChild(svg);
             document.body.appendChild(ribbon);
         });
+        console.log('Ribbons created');
     }
 
     // Cleanup function (for manual removal if needed)
