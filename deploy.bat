@@ -20,7 +20,7 @@ echo Adding all files...
 git add .
 
 echo Committing changes...
-git commit -m "Update hero tagline and fix spacing - powered by coffee and toddler negotiation"
+git commit -m "Optimize scroll performance and parallax effects for smooth 60fps scrolling"
 
 echo Pushing to GitHub...
 git push origin main
@@ -32,7 +32,7 @@ if %errorlevel% equ 0 (
     echo ========================================
     echo.
     echo Your changes are now live on GitHub and Vercel!
-    echo The new tagline "powered by coffee and toddler negotiation" is now live.
+    echo Scroll performance optimizations are now deployed.
     echo.
     echo Vercel will automatically deploy the changes in 1-2 minutes.
     echo Check your Vercel dashboard to see the deployment progress.

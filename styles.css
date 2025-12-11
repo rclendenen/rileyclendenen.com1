@@ -276,6 +276,10 @@ p {
     opacity: 0.1;
     border-radius: 50%;
     transform: rotate(15deg);
+    will-change: transform;
+    transform-origin: center center;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
 }
 
 .hero-content {

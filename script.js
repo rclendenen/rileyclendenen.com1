@@ -164,27 +164,66 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Header scroll effect
+// Optimized scroll handler using requestAnimationFrame for smooth performance
 let lastScrollY = window.scrollY;
-window.addEventListener('scroll', () => {
+let ticking = false;
+let heroAccent = null;
+
+// Cache DOM elements and enable GPU acceleration
+function initScrollElements() {
+    heroAccent = document.querySelector('.hero-accent');
+    if (heroAccent) {
+        // Enable GPU acceleration for smooth parallax
+        heroAccent.style.willChange = 'transform';
+    }
+    // Enable GPU acceleration for header
+    if (header) {
+        header.style.willChange = 'transform';
+    }
+}
+
+// Initialize immediately if DOM is ready, otherwise wait
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initScrollElements);
+} else {
+    initScrollElements();
+}
+
+// Single optimized scroll handler
+function handleScroll() {
     const currentScrollY = window.scrollY;
     
-    // Add/remove scrolled class for styling
+    // Header scroll effect
     if (currentScrollY > 100) {
         header.classList.add('scrolled');
     } else {
         header.classList.remove('scrolled');
     }
     
-    // Hide/show header on scroll (optional)
+    // Hide/show header on scroll
     if (currentScrollY > lastScrollY && currentScrollY > 200) {
         header.style.transform = 'translateY(-100%)';
     } else {
         header.style.transform = 'translateY(0)';
     }
     
+    // Parallax effect for hero section (optimized)
+    if (heroAccent && currentScrollY < window.innerHeight) {
+        const parallaxValue = currentScrollY * 0.3;
+        heroAccent.style.transform = `rotate(15deg) translateY(${parallaxValue}px)`;
+    }
+    
     lastScrollY = currentScrollY;
-});
+    ticking = false;
+}
+
+// Throttle scroll events using requestAnimationFrame
+window.addEventListener('scroll', () => {
+    if (!ticking) {
+        window.requestAnimationFrame(handleScroll);
+        ticking = true;
+    }
+}, { passive: true });
 
 // Contact Form Handling
 if (contactForm) {
@@ -378,15 +417,7 @@ document.querySelectorAll('.service-card').forEach(card => {
     });
 });
 
-// Parallax effect for hero section
-window.addEventListener('scroll', () => {
-    const scrolled = window.pageYOffset;
-    const heroAccent = document.querySelector('.hero-accent');
-    
-    if (heroAccent && scrolled < window.innerHeight) {
-        heroAccent.style.transform = `rotate(15deg) translateY(${scrolled * 0.3}px)`;
-    }
-});
+// Parallax effect is now handled in the optimized scroll handler above
 
 // Typing animation for hero title
 function typeWriter(element, text, speed = 50) {
@@ -431,6 +462,8 @@ style.textContent = `
     
     .header {
         transition: transform 0.3s ease, background-color 0.3s ease;
+        will-change: transform;
+        transform-origin: top center;
     }
     
     .header.scrolled {
@@ -475,32 +508,7 @@ style.textContent = `
 `;
 document.head.appendChild(style);
 
-// Performance optimization: Debounce scroll events
-function debounce(func, wait) {
-    let timeout;
-    return function executedFunction(...args) {
-        const later = () => {
-            clearTimeout(timeout);
-            func(...args);
-        };
-        clearTimeout(timeout);
-        timeout = setTimeout(later, wait);
-    };
-}
-
-// Apply debouncing to scroll events
-const debouncedScrollHandler = debounce(() => {
-    // Header scroll effect
-    const currentScrollY = window.scrollY;
-    
-    if (currentScrollY > 100) {
-        header.classList.add('scrolled');
-    } else {
-        header.classList.remove('scrolled');
-    }
-}, 10);
-
-window.addEventListener('scroll', debouncedScrollHandler);
+// Scroll optimization is now handled by requestAnimationFrame above
 
 // Initialize everything when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
