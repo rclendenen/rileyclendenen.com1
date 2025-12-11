@@ -275,11 +275,13 @@ p {
     background: linear-gradient(45deg, var(--sage), var(--reseda-green));
     opacity: 0.1;
     border-radius: 50%;
-    transform: rotate(15deg);
+    transform: rotate(15deg) translateZ(0);
     will-change: transform;
     transform-origin: center center;
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
+    contain: layout style paint;
+    isolation: isolate;
 }
 
 .hero-content {

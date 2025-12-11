@@ -207,10 +207,11 @@ function handleScroll() {
         header.style.transform = 'translateY(0)';
     }
     
-    // Parallax effect for hero section (optimized)
+    // Parallax effect for hero section (optimized with transform3d for GPU acceleration)
     if (heroAccent && currentScrollY < window.innerHeight) {
         const parallaxValue = currentScrollY * 0.3;
-        heroAccent.style.transform = `rotate(15deg) translateY(${parallaxValue}px)`;
+        // Use transform3d for better GPU acceleration on Mac
+        heroAccent.style.transform = `rotate(15deg) translate3d(0, ${parallaxValue}px, 0)`;
     }
     
     lastScrollY = currentScrollY;

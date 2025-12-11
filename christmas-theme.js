@@ -162,7 +162,12 @@
         document.body.appendChild(snowContainer);
 
         const snowflakes = ['❄', '❅', '❆'];
-        const numSnowflakes = 50; // Adjust for performance
+        // Reduced snowflake count for better Mac performance
+        const numSnowflakes = 25; // Reduced from 50 for Mac optimization
+        
+        // Enable GPU acceleration on container
+        snowContainer.style.willChange = 'transform';
+        snowContainer.style.transform = 'translateZ(0)';
 
         function createSnowflake() {
             const snowflake = document.createElement('div');
@@ -183,6 +188,12 @@
             // Random delay (reduced for faster appearance)
             snowflake.style.animationDelay = Math.random() * 2 + 's';
             
+            // Enable GPU acceleration for each snowflake
+            snowflake.style.willChange = 'transform, opacity';
+            snowflake.style.transform = 'translateZ(0)';
+            snowflake.style.backfaceVisibility = 'hidden';
+            snowflake.style.webkitBackfaceVisibility = 'hidden';
+            
             snowContainer.appendChild(snowflake);
             
             // Remove snowflake after animation completes
@@ -193,18 +204,18 @@
             }, (duration + 5) * 1000);
         }
 
-        // Create initial snowflakes immediately
+        // Create initial snowflakes with staggered timing for better performance
         for (let i = 0; i < numSnowflakes; i++) {
-            setTimeout(() => createSnowflake(), i * 100);
+            setTimeout(() => createSnowflake(), i * 200); // Increased delay for better performance
         }
         console.log('Snowfall effect created');
 
-        // Continuously create new snowflakes
+        // Continuously create new snowflakes with longer interval for Mac performance
         setInterval(() => {
             if (snowContainer.children.length < numSnowflakes) {
                 createSnowflake();
             }
-        }, 500);
+        }, 1000); // Increased from 500ms to 1000ms for better performance
     }
 
     // Christmas Ribbon Decorations - Diagonal Ribbons Across Corners

@@ -160,6 +160,10 @@
     pointer-events: none;
     z-index: 1;
     overflow: hidden;
+    will-change: transform;
+    transform: translateZ(0);
+    contain: layout style paint;
+    isolation: isolate;
 }
 
 .christmas-snowflake {
@@ -170,12 +174,17 @@
     text-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
     animation: snowfall linear infinite;
     user-select: none;
+    will-change: transform, opacity;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    contain: layout style paint;
 }
 
-/* Snowfall Animation */
+/* Snowfall Animation - Optimized with transform3d for GPU acceleration */
 @keyframes snowfall {
     0% {
-        transform: translateY(-100vh) rotate(0deg);
+        transform: translate3d(0, -100vh, 0) rotate(0deg);
         opacity: 0;
     }
     10% {
@@ -185,7 +194,7 @@
         opacity: 1;
     }
     100% {
-        transform: translateY(100vh) rotate(360deg);
+        transform: translate3d(0, 100vh, 0) rotate(360deg);
         opacity: 0;
     }
 }
